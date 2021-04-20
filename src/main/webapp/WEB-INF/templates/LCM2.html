@@ -25,8 +25,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="/ownData">Tasks and absent</a>
-            <a href="/ownDataAbsent">List absent</a>
+            <a href="/ownData2">Tasks and absent</a>
+            <a href="/ownDataAbsent2">List absent</a>
         </div>
     </div>
     <div class="dropdown">
@@ -34,33 +34,15 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="/schema">Completed table</a>
-            <a href="/lcm">LCM</a>
-            <a href="/vcm">VCM</a>
-            <a href="/mcfg">MCFG</a>
-            <a href="/allAbsent">Absent: all members</a>
-            <a href="/alltasksallmember">Tasks: all members</a>
+            <a href="/schema2">Completed table</a>
+            <a href="/lcm2">LCM</a>
+            <a href="/vcm2">VCM</a>
+            <a href="/mcfg2">MCFG</a>
+            <a href="/allAbsent2">Absent: all members</a>
+            <a href="/alltasksallmember2">Tasks: all members</a>
         </div>
     </div>
-    <div class="dropdown">
-        <button class="dropbtn">List all members
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="/allStaffMember">List all members</a>
-            <a href="/alltask">list: all tasks</a>
-            <a href="/allfunction">list: all functions</a>
-            <a href="/alllocation">list: all locations</a>
-        </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">CheckList
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="/check">Checklist</a>
-        </div>
-    </div>
+
 </div>
 <br>
 <div  class= "tableTask">
@@ -237,7 +219,6 @@
             <td>[[${fillin.friAmAbsent}]]</td>
             <td>[[${fillin.friPmAbsent}]]</td>
         </tr>
-
         <tr>
             <th colspan="5" class="schema2">Tasks</th>
         </tr>
@@ -245,62 +226,109 @@
         <tr>
             <th colspan="2" class="schema2"></th>
             <th class="schema2">Name</th>
-            <th class="schema2">AM</th>
-            <th class="schema2">PM</th>
+            <th class="schema2">Task</th>
+            <th class="schema2"></th>
         </tr>
         <tr>
             <th colspan="5" class="schema">Monday</th>
         </tr>
-        <tr th:each="fillin: ${tableFillinLCMTaskMon2}">
+        <tr th:each="fillin: ${tableFillinLCMTaskMonAm2}">
             <th></th>
-            <th>AM</th>
+            <th>Am</th>
             <td>[[${fillin.name}]]</td>
             <td>[[${fillin.monAmTask}]]</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinLCMTaskMonPm2}">
+            <th></th>
+            <th>Pm</th>
+            <td>[[${fillin.name}]]</td>
             <td>[[${fillin.monPmTask}]]</td>
+            <td></td>
         </tr>
         <tr>
             <th colspan="5" class="schema">Tuesday</th>
         </tr>
-        <tr th:each="fillin: ${tableFillinLCMTaskTue2}">
+        <tr th:each="fillin: ${tableFillinLCMTaskTueAm2}">
             <th></th>
-            <th>AM</th>
+            <th>Am</th>
             <td>[[${fillin.name}]]</td>
             <td>[[${fillin.tueAmTask}]]</td>
-            <td>[[${fillin.tuePmTask}]]</td>
+            <td></td>
         </tr>
-
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinLCMTaskTuePm2}">
+            <th></th>
+            <th>Pm</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.tuePmTask}]]</td>
+            <td></td>
+        </tr>
         <tr>
             <th colspan="5" class="schema">Wednesday</th>
         </tr>
-        <tr th:each="fillin: ${tableFillinLCMTaskWed2}">
+        <tr th:each="fillin: ${tableFillinLCMTaskWedAm2}">
             <th></th>
-            <th>AM</th>
+            <th>Am</th>
             <td>[[${fillin.name}]]</td>
             <td>[[${fillin.wedAmTask}]]</td>
-            <td>[[${fillin.wedPmTask}]]</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        tr th:each="fillin: ${tableFillinLCMTaskWedPm2}">
+        <th></th>
+        <th>Pm</th>
+        <td>[[${fillin.name}]]</td>
+        <td>[[${fillin.wedPmTask}]]</td>
+        <td></td>
         </tr>
         <tr>
             <th colspan="5" class="schema">Thursday</th>
         </tr>
-        <tr th:each="fillin: ${tableFillinLCMTaskThu2}">
+        <tr th:each="fillin: ${tableFillinLCMTaskThuAm2}">
             <th></th>
-            <th>AM</th>
+            <th>Am</th>
             <td>[[${fillin.name}]]</td>
             <td>[[${fillin.thuAmTask}]]</td>
-            <td>[[${fillin.thuPmTask}]]</td>
+            <td></td>
         </tr>
-
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinLCMTaskThuPm2}">
+            <th></th>
+            <th>Pm</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.thuPmTask}]]</td>
+            <td></td>
+        </tr>
         <tr>
             <th colspan="5" class="schema">Friday</th>
         </tr>
-        <tr th:each="fillin: ${tableFillinLCMTaskFri2}">
+        <tr th:each="fillin: ${tableFillinLCMTaskFriAm2}">
             <th></th>
-            <th>AM</th>
+            <th>Am</th>
             <td>[[${fillin.name}]]</td>
             <td>[[${fillin.friAmTask}]]</td>
-            <td>[[${fillin.friPmTask}]]</td>
+            <td></td>
         </tr>
-
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinLCMTaskFriPm2}">
+            <th></th>
+            <th>Pm</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.friPmTask}]]</td>
+            <td></td>
+        </tr>
     </table>
 
 

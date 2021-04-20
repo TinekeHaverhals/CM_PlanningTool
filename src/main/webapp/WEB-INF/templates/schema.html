@@ -243,64 +243,112 @@
             <tr>
                 <th colspan="2" class="schema2"></th>
                 <th class="schema2">Name</th>
-                <th class="schema2">AM</th>
-                <th class="schema2">PM</th>
+                <th class="schema2">Task</th>
+                <th class="schema2"></th>
             </tr>
             <tr>
                 <th colspan="5" class="schema">Monday</th>
             </tr>
-            <tr th:each="fillin: ${tableFillinTaskMon}">
+            <tr th:each="fillin: ${tableFillinTaskMonAm}">
                 <th></th>
                 <th>AM</th>
                 <td>[[${fillin.name}]]</td>
                 <td>[[${fillin.monAmTask}]]</td>
-                <td>[[${fillin.monPmTask}]]</td>
+                <td></td>
             </tr>
+            <tr>
+                <th colspan="5" class="schema3"></th>
+            </tr>
+            <tr th:each="fillin: ${tableFillinTaskMonPm}">
+                <th></th>
+                <th>PM</th>
+                <td>[[${fillin.name}]]</td>
+                <td>[[${fillin.monPmTask}]]</td>
+                <td></td>
+            </tr>
+
             <tr>
                 <th colspan="5" class="schema">Tuesday</th>
             </tr>
-            <tr th:each="fillin: ${tableFillinTaskTue}">
+            <tr th:each="fillin: ${tableFillinTaskTueAm}">
                 <th></th>
                 <th>AM</th>
                 <td>[[${fillin.name}]]</td>
                 <td>[[${fillin.tueAmTask}]]</td>
-                <td>[[${fillin.tuePmTask}]]</td>
+                <td></td>
             </tr>
-
+            <tr>
+                <th colspan="5" class="schema3"></th>
+            </tr>
+            <tr th:each="fillin: ${tableFillinTaskTuePm}">
+                <th></th>
+                <th>PM</th>
+                <td>[[${fillin.name}]]</td>
+                <td>[[${fillin.tuePmTask}]]</td>
+                <td></td>
+            </tr>
             <tr>
                 <th colspan="5" class="schema">Wednesday</th>
             </tr>
-            <tr th:each="fillin: ${tableFillinTaskWed}">
+            <tr th:each="fillin: ${tableFillinTaskWedAm}">
                 <th></th>
                 <th>AM</th>
                 <td>[[${fillin.name}]]</td>
                 <td>[[${fillin.wedAmTask}]]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th colspan="5" class="schema3"></th>
+            </tr>
+            <tr th:each="fillin: ${tableFillinTaskWedPm}">
+                <th></th>
+                <th>PM</th>
+                <td>[[${fillin.name}]]</td>
                 <td>[[${fillin.wedPmTask}]]</td>
+                <td></td>
             </tr>
             <tr>
                 <th colspan="5" class="schema">Thursday</th>
             </tr>
-            <tr th:each="fillin: ${tableFillinTaskThu}">
+            <tr th:each="fillin: ${tableFillinTaskThuAm}">
                 <th></th>
                 <th>AM</th>
                 <td>[[${fillin.name}]]</td>
                 <td>[[${fillin.thuAmTask}]]</td>
-                <td>[[${fillin.thuPmTask}]]</td>
+                <td></td>
             </tr>
-
+            <tr>
+                <th colspan="5" class="schema3"></th>
+            </tr>
+            <tr th:each="fillin: ${tableFillinTaskThuPm}">
+                <th></th>
+                <th>PM</th>
+                <td>[[${fillin.name}]]</td>
+                <td>[[${fillin.thuPmTask}]]</td>
+                <td></td>
+            </tr>
             <tr>
                 <th colspan="5" class="schema">Friday</th>
             </tr>
-            <tr th:each="fillin: ${tableFillinTaskFri}">
+            <tr th:each="fillin: ${tableFillinTaskFriAm}">
                 <th></th>
                 <th>AM</th>
                 <td>[[${fillin.name}]]</td>
-                <td>[[${fillin.friAmTask}]]</td>
-                <td>[[${fillin.friPmTask}]]</td>
+                <td>[[${fillin.FriAmTask}]]</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th colspan="5" class="schema3"></th>
+            </tr>
+            <tr th:each="fillin: ${tableFillinTaskFriPm}">
+                <th></th>
+                <th>PM</th>
+                <td>[[${fillin.name}]]</td>
+                <td>[[${fillin.FriPmTask}]]</td>
+                <td></td>
             </tr>
 
         </table>
-
 
     </div>
 </div>

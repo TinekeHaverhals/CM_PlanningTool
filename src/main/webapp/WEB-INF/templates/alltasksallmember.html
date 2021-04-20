@@ -83,16 +83,15 @@
 
     <table style="width: 80%" >
         <tr>
-            <th>Days:</th>
-            <th>AM/PM:</th>
-            <td>Name:</td>
-            <td>Funtion:</td>
-            <td>Tasks:</td>
-            <td>Location:</td>
-
+            <th class="schema2">Days:</th>
+            <th class="schema2">AM/PM:</th>
+            <td class="schema2">Name:</td>
+            <td class="schema2">Funtion:</td>
+            <td class="schema2">Tasks:</td>
+            <td class="schema2">Location:</td>
         </tr>
         <tr>
-            <th colspan="6">Mon</th>
+            <th colspan="6" class="schema">MonDay</th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberMonAm}">
             <th></th>
@@ -102,7 +101,9 @@
             <td>[[${fillin.monAmTask}]]</td>
             <td>[[${fillin.monAmLocation}]]</td>
         </tr>
-
+        <tr>
+            <th colspan="6" class="schema3"></th>
+        </tr>
         <tr th:each="fillin: ${searchTasksMemberMonPm}">
             <th></th>
             <th>PM</th>
@@ -112,7 +113,7 @@
             <td>[[${fillin.monPmLocation}]]</td>
         </tr>
         <tr>
-            <th colspan="6">Tue</th>
+            <th colspan="6" class="schema">Tuesday</th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberTueAm}">
             <th></th>
@@ -121,6 +122,9 @@
             <td>[[${fillin.tueAmFunction}]]</td>
             <td>[[${fillin.tueAmTask}]]</td>
             <td>[[${fillin.tueAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="6" class="schema3"></th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberTuePm}">
             <th></th>
@@ -131,7 +135,7 @@
             <td>[[${fillin.tuePmLocation}]]</td>
         </tr>
         <tr>
-            <th colspan="6">Wed</th>
+            <th colspan="6" class="schema">Wednesday</th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberWedAm}">
             <th></th>
@@ -140,6 +144,9 @@
             <td>[[${fillin.wedAmFunction}]]</td>
             <td>[[${fillin.wedAmTask}]]</td>
             <td>[[${fillin.wedAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="6" class="schema3"></th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberWedPm}">
             <th></th>
@@ -150,7 +157,7 @@
             <td>[[${fillin.wedPmLocation}]]</td>
         </tr>
         <tr>
-            <th colspan="6">Thu</th>
+            <th colspan="6" class="schema">Thursday</th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberThuAm}">
             <th></th>
@@ -159,6 +166,9 @@
             <td>[[${fillin.thuAmFunction}]]</td>
             <td>[[${fillin.thuAmTask}]]</td>
             <td>[[${fillin.thuAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="6" class="schema3"></th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberThuPm}">
             <th></th>
@@ -169,7 +179,7 @@
             <td>[[${fillin.thuPmLocation}]]</td>
         </tr>
         <tr>
-            <th colspan="6">Fri</th>
+            <th colspan="6" class="schema">Friday</th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberFriAm}">
             <th></th>
@@ -178,6 +188,9 @@
             <td>[[${fillin.friAmFunction}]]</td>
             <td>[[${fillin.friAmTask}]]</td>
             <td>[[${fillin.friAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="6" class="schema3"></th>
         </tr>
         <tr th:each="fillin: ${searchTasksMemberFriPm}">
             <th></th>
