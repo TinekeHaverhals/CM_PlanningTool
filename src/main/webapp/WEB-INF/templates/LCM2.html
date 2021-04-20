@@ -42,7 +42,6 @@
             <a href="/alltasksallmember2">Tasks: all members</a>
         </div>
     </div>
-
 </div>
 <br>
 <div  class= "tableTask">
@@ -219,6 +218,7 @@
             <td>[[${fillin.friAmAbsent}]]</td>
             <td>[[${fillin.friPmAbsent}]]</td>
         </tr>
+
         <tr>
             <th colspan="5" class="schema2">Tasks</th>
         </tr>
@@ -282,12 +282,12 @@
         <tr>
             <th colspan="5" class="schema3"></th>
         </tr>
-        tr th:each="fillin: ${tableFillinLCMTaskWedPm2}">
-        <th></th>
-        <th>Pm</th>
-        <td>[[${fillin.name}]]</td>
-        <td>[[${fillin.wedPmTask}]]</td>
-        <td></td>
+        <tr th:each="fillin: ${tableFillinLCMTaskWedPm2}">
+            <th></th>
+            <th>Pm</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.wedPmTask}]]</td>
+            <td></td>
         </tr>
         <tr>
             <th colspan="5" class="schema">Thursday</th>

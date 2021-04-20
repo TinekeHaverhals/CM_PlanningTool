@@ -248,7 +248,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinLCMMonAm", fillinServices.getTableFillinLCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinLCMMonPm", fillinServices.getTableFillinLCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinLCMMTueAm", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinLCMTueAm", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinLCMTuePm", fillinServices.getTableFillinLCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedAm", fillinServices.getTableFillinLCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedPm", fillinServices.getTableFillinLCMWedPm(fillin.getWeek()));
@@ -282,7 +282,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinLCMMonAm", fillinServices.getTableFillinLCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinLCMMonPm", fillinServices.getTableFillinLCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinLCMMTueAm", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinLCMTueAm", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinLCMTuePm", fillinServices.getTableFillinLCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedAm", fillinServices.getTableFillinLCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedPm", fillinServices.getTableFillinLCMWedPm(fillin.getWeek()));
@@ -315,7 +315,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinLCMMonAm2", fillinServices.getTableFillinLCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinLCMMonPm2", fillinServices.getTableFillinLCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinLCMMTueAm2", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinLCMTueAm2", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinLCMTuePm2", fillinServices.getTableFillinLCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedAm2", fillinServices.getTableFillinLCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedPm2", fillinServices.getTableFillinLCMWedPm(fillin.getWeek()));
@@ -348,7 +348,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinLCMMonAm2", fillinServices.getTableFillinLCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinLCMMonPm2", fillinServices.getTableFillinLCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinLCMMTueAm2", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinLCMTueAm2", fillinServices.getTableFillinLCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinLCMTuePm2", fillinServices.getTableFillinLCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedAm2", fillinServices.getTableFillinLCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinLCMWedPm2", fillinServices.getTableFillinLCMWedPm(fillin.getWeek()));
@@ -382,7 +382,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinVCMMonAm", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinVCMMonPm", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinVCMMTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinVCMTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinVCMTuePm", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedAm", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedPm", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
@@ -415,7 +415,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinVCMMonAm", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinVCMMonPm", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinVCMMTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinVCMTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinVCMTuePm", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedAm", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedPm", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
@@ -448,7 +448,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinVCMMonAm2", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinVCMMonPm2", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinVCMMTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinVCMTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinVCMTuePm2", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedAm2", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedPm2", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
@@ -481,7 +481,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinVCMMonAm2", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinVCMMonPm2", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinVCMMTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinVCMTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinVCMTuePm2", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedAm2", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinVCMWedPm2", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
@@ -515,7 +515,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinMCFGMonAm", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGMonPm", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinMCFGMTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinMCFGTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGTuePm", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedAm", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedPm", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
@@ -548,7 +548,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinMCFGMonAm", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGMonPm", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinMCFGMTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinMCFGTueAm", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGTuePm", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedAm", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedPm", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
@@ -581,7 +581,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinMCFGMonAm2", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGMonPm2", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinMCFGMTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinMCFGTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGTuePm2", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedAm2", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedPm2", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
@@ -614,7 +614,7 @@ public class CMController {
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinMCFGMonAm2", fillinServices.getTableFillinVCMMonAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGMonPm2", fillinServices.getTableFillinVCMMonPm(fillin.getWeek()));
-        model.addAttribute("fillinMCFGMTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
+        model.addAttribute("fillinMCFGTueAm2", fillinServices.getTableFillinVCMTueAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGTuePm2", fillinServices.getTableFillinVCMTuePm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedAm2", fillinServices.getTableFillinVCMWedAm(fillin.getWeek()));
         model.addAttribute("fillinMCFGWedPm2", fillinServices.getTableFillinVCMWedPm(fillin.getWeek()));
