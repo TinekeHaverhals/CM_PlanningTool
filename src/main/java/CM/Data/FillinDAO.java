@@ -2769,7 +2769,7 @@ public class FillinDAO {
 
     public List<Fillin> getCheck(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Id, StaffMembers.Name, StaffMembers.Department FROM Fillin INNER JOIN   StaffMembers ON Fillin.IdStaffMember != StaffMembers.Id WHERE Week = ? ");
+        PreparedStatement statement = connection.prepareStatement("SELECT Name , Department FROM StaffMembers WHERE NOT EXISTS ( SELECT IdStaffMember FROM Fillin WHERE StaffMembers.Id = Fillin.IdStaffMember AND Week = ?)");
         statement.setString(1, week);
         ResultSet rs = statement.executeQuery();
         List<Fillin> fillins = new ArrayList<>();
