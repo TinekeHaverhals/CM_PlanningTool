@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns:th="http://java.sun.com/xml/ns/persistence/orm">
+<link rel="STYLESHEET" href="css/css.css" type="text/css">
+
+<head>
+    <title>Own data</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <img src="images/cm2.png" alt="CM" width="70" height="70">
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Fill in
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/pageFillin">Fill in</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Own data
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/ownData">Tasks and absent</a>
+                <a href="/ownDataAbsent">List absent</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Information
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/schema">Completed table</a>
+                <a href="/lcm">LCM</a>
+                <a href="/vcm">VCM</a>
+                <a href="/mcfg">MCFG</a>
+                <a href="/allAbsent">Absent: all members</a>
+                <a href="/alltasksallmember">Tasks: all members</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">List all members
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/allStaffMember">List all members</a>
+                <a href="/alltask">list: all tasks</a>
+                <a href="/allfunction">list: all functions</a>
+                <a href="/alllocation">list: all locations</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">CheckList
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/check">Checklist</a>
+            </div>
+        </div>
+    </div>
+    <div  class= "tableTask">
+        <h1> Own data</h1>
+        <form th:action="@{searchOwn}">
+            <label for="week">Choose a week:</label>
+            <select name="week" id="week">
+                <option th:each="dateName: ${dateNames}">[[${dateName.nameDate}]]</option>
+            </select>
+            <label for="IdStaffMember" >Your Id:</label>
+            <select name="IdStaffMember" id="IdStaffMember" >
+                <option>[[${staffMember.id}]]</option>
+            </select>
+            <input type="submit" class="registerbtn" value="search">
+        </form>
+        <br>
+
+            <table id="t01" style="width: 80%">
+                <tr>
+                    <th>Days:</th>
+                    <td>Funtion:</td>
+                    <td>Tasks:</td>
+                    <td>Location:</td>
+                    <td>Absent:</td>
+                </tr>
+                <tr>
+                    <th>Mon AM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monAmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monAmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monAmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monAmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Mon PM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monPmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monPmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monPmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.monPmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Tue AM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Tue PM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Wed AM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Wed PM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Thu AM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Thu PM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Fri AM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friAmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friAmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friAmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friAmAbsent}]]</td>
+                </tr>
+                <tr>
+                    <th>Fri PM</th>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friPmFunction}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friPmTask}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friPmLocation}]]</td>
+                    <td th:each="fillin: ${searchOwn}">[[${fillin.friPmAbsent}]]</td>
+                </tr>
+            </table>
+
+
+    </div>
+
+</body>
+
+</html>

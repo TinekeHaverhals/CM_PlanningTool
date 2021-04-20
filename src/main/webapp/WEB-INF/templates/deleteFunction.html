@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="STYLESHEET" href="css/css.css" type="text/css">
+
+<head>
+    <title>Delete Function</title>
+</head>
+<body>
+<div class="navbar">
+    <div class="dropdown">
+        <img src="images/cm2.png" alt="CM" width="70" height="70">
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Fill in
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/pageFillin">Fill in</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Own data
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/ownData">Tasks and absent</a>
+            <a href="/ownDataAbsent">List absent</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Information
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/schema">Completed table</a>
+            <a href="/lcm">LCM</a>
+            <a href="/vcm">VCM</a>
+            <a href="/mcfg">MCFG</a>
+            <a href="/allAbsent">Absent: all members</a>
+            <a href="/alltasksallmember">Tasks: all members</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">List all members
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/allStaffMember">List all members</a>
+            <a href="/alltask">list: all tasks</a>
+            <a href="/allfunction">list: all functions</a>
+            <a href="/alllocation">list: all locations</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">CheckList
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/check">Checklist</a>
+        </div>
+    </div>
+</div>
+
+<div class="add">
+    <h1><u>Delete a function</u></h1>
+    <form th:action="@{deletefun}">
+        <div class="container">
+            <label for="department">Choose a departement:</label>
+            <select name="department" id="department">
+                <option value="LCM">LCM</option>
+                <option value="VCM">VCM</option>
+                <option value="MCFG">MCFG</option>
+            </select>
+            <br>
+            <br>
+            <label><b>Name of the function </b></label>
+            <input type="text" name="namefunction">
+            <input type="submit" class="registerbtn" value="Delete">
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

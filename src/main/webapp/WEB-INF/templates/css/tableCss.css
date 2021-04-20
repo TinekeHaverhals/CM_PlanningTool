@@ -1,0 +1,325 @@
+body {
+    background-color: gainsboro;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.framework {
+    border: 2px #3399CC;
+    padding: 3px;
+    text-align: center;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #418345;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: darkgreen;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.kader {
+    margin-left: 5%;
+}
+
+table {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-right: 5%;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+.t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.t01 tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.t01 th {
+    background-color: #418345;
+    color: white;
+}
+
+.add {
+    margin-left: 5%;
+    margin-right: 25%;
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.delete {
+    margin-left: 2%;
+    margin-right: 5%;
+}
+
+.border2 {
+    border-top-width: Medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+    border-style: solid;
+}
+
+.border3 {
+    border-bottom-width: medium;
+    border-style: solid;
+}
+
+.border6 {
+    border-top-width: medium;
+    border-style: solid;
+}
+
+.border7 {
+    border-top-width: medium;
+    border-right: medium;
+    border-style: solid;
+}
+
+.border4 {
+    border-bottom-width: medium;
+    border-right-width: medium;
+    border-style: solid;
+}
+
+.border5 {
+    border-right-width: medium;
+    border-style: solid;
+}
+
+.border {
+    border: 3px solid black;
+}
+
+
+/* Kleuren Leeg vakje*/
+
+tr:nth-child(15) {
+    background-color: orange;
+}
+
+tr:nth-child(29) {
+    background-color: orange;
+}
+
+
+/* Kleuren LCM */
+
+tr:nth-child(2) {
+    background-color: mistyrose;
+}
+
+tr:nth-child(3) {
+    background-color: mistyrose;
+}
+
+tr:nth-child(14) {
+    background-color: mistyrose;
+}
+
+tr:nth-child(23) {
+    background-color: mistyrose;
+}
+
+tr:nth-child(24) {
+    background-color: mistyrose;
+}
+
+tr:nth-child(28) {
+    background-color: mistyrose;
+}
+
+tr:nth-child(30) {
+    background-color: mistyrose;
+}
+
+
+/* Kleuren VCM */
+
+tr:nth-child(4) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(5) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(6) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(7) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(8) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(9) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(16) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(17) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(18) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(19) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(20) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(25) {
+    background-color: lightcyan;
+}
+
+tr:nth-child(26) {
+    background-color: lightcyan;
+}
+
+
+/* Kleuren MCFG */
+
+tr:nth-child(10) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(11) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(12) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(13) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(21) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(22) {
+    background-color: lightgreen;
+}
+
+tr:nth-child(27) {
+    background-color: lightgreen;
+}

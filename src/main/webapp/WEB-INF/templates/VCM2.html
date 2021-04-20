@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="STYLESHEET" href="css/css.css" type="text/css">
+
+<head>
+    <title>VCM</title>
+</head>
+
+<body>
+<div class="navbar">
+    <div class="dropdown">
+        <img src="images/cm2.png" alt="CM" width="70" height="70">
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Fill in
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/pageFillin">Fill in</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Own data
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/ownData">Tasks and absent</a>
+            <a href="/ownDataAbsent">List absent</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Information
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/schema">Completed table</a>
+            <a href="/lcm">LCM</a>
+            <a href="/vcm">VCM</a>
+            <a href="/mcfg">MCFG</a>
+            <a href="/allAbsent">Absent: all members</a>
+            <a href="/alltasksallmember">Tasks: all members</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">List all members
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/allStaffMember">List all members</a>
+            <a href="/alltask">list: all tasks</a>
+            <a href="/allfunction">list: all functions</a>
+            <a href="/alllocation">list: all locations</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">CheckList
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/check">Checklist</a>
+        </div>
+    </div>
+</div>
+<br>
+<div  class= "tableTask">
+    <form th:action="@{searchVCM}">
+        <label for="week">Choose a week:</label>
+        <select name="week" id="week">
+            <option th:each="dateName: ${dateNames}">[[${dateName.nameDate}]]</option>
+        </select>
+        <input type="submit" class="registerbtn" value="search">
+    </form>
+    <br>
+    <br>
+
+    <table style="width: 80%" >
+        <tr>
+            <th class="schema2">Days:</th>
+            <th class="schema2">AM/PM:</th>
+            <th class="schema2">Name:</th>
+            <th class="schema2">Funtion:</th>
+            <th class="schema2">Location:</th>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Monday</th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMMonAm2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.monAmFunction}]]</td>
+            <td>[[${fillin.monAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMMonPm2}">
+            <th></th>
+            <th>PM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.monPmFunction}]]</td>
+            <td>[[${fillin.monPmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Tuesday</th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMTueAm2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.tueAmFunction}]]</td>
+            <td>[[${fillin.tueAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMTuePm2}">
+            <th></th>
+            <th>PM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.tuePmFunction}]]</td>
+            <td>[[${fillin.tuePmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Wednesday</th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMWedAm2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.wedAmFunction}]]</td>
+            <td>[[${fillin.wedAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMWedPm2}">
+            <th></th>
+            <th>PM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.wedPmFunction}]]</td>
+            <td>[[${fillin.wedPmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Thursday</th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMThuAm2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.thuAmFunction}]]</td>
+            <td>[[${fillin.thuAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMThuPm2}">
+            <th></th>
+            <th>PM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.thuPmFunction}]]</td>
+            <td>[[${fillin.thuPmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Friday</th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMFriAm2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.friAmFunction}]]</td>
+            <td>[[${fillin.friAmLocation}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema3"></th>
+        </tr>
+        <tr th:each="fillin: ${fillinVCMFriPm2}">
+            <th></th>
+            <th>PM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.friPmFunction}]]</td>
+            <td>[[${fillin.friPmLocation}]]</td>
+        </tr>
+
+        <tr>
+            <th colspan="5" class="schema2">Absent</th>
+        </tr>
+        <tr>
+            <th colspan="2" class="schema2"></th>
+            <th class="schema2">Name</th>
+            <th class="schema2">AM</th>
+            <th class="schema2">PM</th>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Monday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMAbsentMon2}">
+            <th colspan="2"></th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.monAmAbsent}]]</td>
+            <td>[[${fillin.monAmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5"  class="schema">Tuesday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMAbsentTue2}">
+            <th colspan="2"></th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.tueAmAbsent}]]</td>
+            <td>[[${fillin.tuePmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5"  class="schema">Wednesday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMAbsentWed2}">
+            <th colspan="2"></th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.wedAmAbsent}]]</td>
+            <td>[[${fillin.wedPmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5"  class="schema">Thursday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMAbsentThu2}">
+            <th colspan="2"></th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.thuAmAbsent}]]</td>
+            <td>[[${fillin.thuPmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5"  class="schema">Friday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMAbsentFri2}">
+            <th colspan="2"></th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.friAmAbsent}]]</td>
+            <td>[[${fillin.friPmAbsent}]]</td>
+        </tr>
+
+        <tr>
+            <th colspan="5" class="schema2">Tasks</th>
+        </tr>
+
+        <tr>
+            <th colspan="2" class="schema2"></th>
+            <th class="schema2">Name</th>
+            <th class="schema2">AM</th>
+            <th class="schema2">PM</th>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Monday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMTaskMon2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.monAmTask}]]</td>
+            <td>[[${fillin.monPmTask}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Tuesday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMTaskTue2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.tueAmTask}]]</td>
+            <td>[[${fillin.tuePmTask}]]</td>
+        </tr>
+
+        <tr>
+            <th colspan="5" class="schema">Wednesday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMTaskWed2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.wedAmTask}]]</td>
+            <td>[[${fillin.wedPmTask}]]</td>
+        </tr>
+        <tr>
+            <th colspan="5" class="schema">Thursday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMTaskThu2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.thuAmTask}]]</td>
+            <td>[[${fillin.thuPmTask}]]</td>
+        </tr>
+
+        <tr>
+            <th colspan="5" class="schema">Friday</th>
+        </tr>
+        <tr th:each="fillin: ${tableFillinVCMTaskFri2}">
+            <th></th>
+            <th>AM</th>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.friAmTask}]]</td>
+            <td>[[${fillin.friPmTask}]]</td>
+        </tr>
+
+    </table>
+
+
+</div>
+
+</body>
+
+</html>
+
+
+

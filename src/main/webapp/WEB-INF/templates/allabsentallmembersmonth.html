@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="STYLESHEET" href="css/css.css" type="text/css">
+
+<head>
+    <title>All absent choose department</title>
+</head>
+
+<body>
+<div class="navbar">
+    <div class="dropdown">
+        <img src="images/cm2.png" alt="CM" width="70" height="70">
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Fill in
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/pageFillin">Fill in</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Own data
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/ownData">Tasks and absent</a>
+            <a href="/ownDataAbsent">List absent</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Information
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/schema">Completed table</a>
+            <a href="/lcm">LCM</a>
+            <a href="/vcm">VCM</a>
+            <a href="/mcfg">MCFG</a>
+            <a href="/allAbsent">Absent: all members</a>
+            <a href="/alltasksallmember">Tasks: all members</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">List all members
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/allStaffMember">List all members</a>
+            <a href="/alltask">list: all tasks</a>
+            <a href="/allfunction">list: all functions</a>
+            <a href="/alllocation">list: all locations</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">CheckList
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/check">Checklist</a>
+        </div>
+    </div>
+</div>
+
+<div  class= "tableTask">
+    <form th:action="@{searchAllDataAbsentMonth}">
+        <label for="month">Choose a Month:</label>
+        <select name="month" id="month">
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+        </select>
+
+        <input type="submit" class="registerbtn" value="search">
+    </form>
+
+
+
+    <br>
+    <br>
+    <table id="t01" >
+        <tr>
+            <th>Week</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>mon Am</th>
+            <th>mon PM</th>
+            <th>tue Am</th>
+            <th>tue PM</th>
+            <th>wed Am</th>
+            <th>wed PM</th>
+            <th>thu Am</th>
+            <th>thu PM</th>
+            <th>fri Am</th>
+            <th>fri PM</th>
+        </tr>
+
+        <tr th:each="fillin: ${searchAllDataAbsentMonth}">
+            <td>[[${fillin.week}]]</td>
+            <td>[[${fillin.name}]]</td>
+            <td>[[${fillin.department}]]</td>
+            <td>[[${fillin.monAmAbsent}]]</td>
+            <td>[[${fillin.monPmAbsent}]]</td>
+            <td>[[${fillin.tueAmAbsent}]]</td>
+            <td>[[${fillin.tuePmAbsent}]]</td>
+            <td>[[${fillin.wedAmAbsent}]]</td>
+            <td>[[${fillin.wedPmAbsent}]]</td>
+            <td>[[${fillin.thuAmAbsent}]]</td>
+            <td>[[${fillin.thuPmAbsent}]]</td>
+            <td>[[${fillin.friAmAbsent}]]</td>
+            <td>[[${fillin.friPmAbsent}]]</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

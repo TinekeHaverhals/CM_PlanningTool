@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="STYLESHEET" href="css/css.css" type="text/css">
+
+<head>
+    <title>Choices</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <img src="images/cm2.png" alt="CM" width="70" height="70">
+        </div>
+    </div>
+    <br>
+    <div class="add">
+        <form method="post" th:action="@{/login}">
+            <div class="container">
+                <label><b>Employee Number</b></label>
+                <input type="text" name="employeeId">
+                <input class="buttonB button1" type="submit"  value="login">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
