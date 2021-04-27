@@ -52,10 +52,6 @@
         <select name="week" id="week">
             <option th:each="dateName: ${dateNames}">[[${dateName.nameDate}]]</option>
         </select>
-        <label for="IdStaffMember" >Your Id:</label>
-        <select name="IdStaffMember" id="IdStaffMember" >
-            <option> [[${staffMember.id}]]</option>
-        </select>
         <input type="submit" class="registerbtn" value="search">
     </form>
 
