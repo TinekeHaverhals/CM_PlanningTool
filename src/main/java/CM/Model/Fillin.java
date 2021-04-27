@@ -20,6 +20,10 @@ public class Fillin {
     private String month;
     private String department;
 
+    private String nameDate;
+    private String monthBegin;
+    private String monthEnd;
+
     private String monAmFunction;
     private String monAmTask;
     private String monAmLocation;
@@ -73,6 +77,7 @@ public class Fillin {
     public Fillin(){
 
     }
+
     public Fillin(String week, String department, String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent ){
         this.week= week;
         this.department = department;
@@ -153,6 +158,33 @@ public class Fillin {
 
     public Fillin setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getNameDate() {
+        return nameDate;
+    }
+
+    public Fillin setNameDate(String nameDate) {
+        this.nameDate = nameDate;
+        return this;
+    }
+
+    public String getMonthBegin() {
+        return monthBegin;
+    }
+
+    public Fillin setMonthBegin(String monthBegin) {
+        this.monthBegin = monthBegin;
+        return this;
+    }
+
+    public String getMonthEnd() {
+        return monthEnd;
+    }
+
+    public Fillin setMonthEnd(String monthEnd) {
+        this.monthEnd = monthEnd;
         return this;
     }
 
@@ -515,6 +547,4 @@ public class Fillin {
         this.friPmAbsent = friPmAbsent;
         return this;
     }
-
-
 }

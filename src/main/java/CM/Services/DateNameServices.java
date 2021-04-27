@@ -20,6 +20,7 @@ public class DateNameServices {
     private DateNameDAO dateNameDAO;
 
     public List<DateName> getAllDateName() throws SQLException {
-        return dateNameDAO.getAllDateName();
-    }
+            return dateNameDAO.getAllDateName();
+        }
+
 }

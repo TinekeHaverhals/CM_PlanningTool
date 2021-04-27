@@ -367,5 +367,17 @@ public class FillinServices {
     public List<Fillin> getCheck(String week) throws SQLException {
         return fillinDAO.getCheck(week);
     }
+
+    public List<Fillin> getAllDateName() throws SQLException {
+        return fillinDAO.getAllDateName();
+    }
+
+    public List<Fillin> getDateName() throws SQLException {
+        return fillinDAO.getDateName();
+    }
+
+    public List<Fillin> getDateNameId(int IdStaffMember) throws SQLException {
+        return fillinDAO.getDateNameId(IdStaffMember);
+    }
 }
 

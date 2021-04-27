@@ -13,6 +13,7 @@ public class DateName {
     @Id
     @GeneratedValue
     private int id;
+    private int IdStaffMember;
     private String nameDate;
     private String monthBegin;
     private String monthEnd;
@@ -30,6 +31,15 @@ public class DateName {
 
     public DateName setId(int id) {
         this.id = id;
+        return this;
+    }
+
+    public int getIdStaffMember() {
+        return IdStaffMember;
+    }
+
+    public DateName setIdStaffMember(int idStaffMember) {
+        IdStaffMember = idStaffMember;
         return this;
     }
 

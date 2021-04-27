@@ -2,12 +2,11 @@ package CM.Data;
 
 import CM.Model.Absent;
 import CM.Model.DateName;
+import CM.Model.Fillin;
+import CM.Model.StaffMember;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,10 +21,10 @@ public class DateNameDAO {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT Date FROM Date");
-        List<DateName> dateNames= new ArrayList<>();
+        List<DateName> dateNames = new ArrayList<>();
         DateName dateName = null;
-        if (rs!= null){
-            while (rs.next()){
+        if (rs != null) {
+            while (rs.next()) {
                 dateName = new DateName();
                 dateName.setNameDate(rs.getString("date"));
                 dateNames.add(dateName);
@@ -34,3 +33,4 @@ public class DateNameDAO {
         return dateNames;
     }
 }
+
