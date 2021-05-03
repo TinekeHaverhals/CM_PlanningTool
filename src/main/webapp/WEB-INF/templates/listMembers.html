@@ -74,8 +74,9 @@
                 <th>MobileNumber</th>
                 <th>Prive or not</th>
                 <th>Before telnumber</th>
-                <th>phoneNumber</th>
-                <th>agentNumber</th>
+                <th>PhoneNumber</th>
+                <th>AgentNumber</th>
+                <th>Responsible</th>
             </tr>
 
             <tr th:each="staffMember: ${staffMembers}">
@@ -88,6 +89,7 @@
                 <td>[[${staffMember.codePhoneNumber}]]</td>
                 <td>[[${staffMember.phoneNumber}]]</td>
                 <td>[[${staffMember.agentNumber}]]</td>
+                <td>[[${staffMember.responsible}]]</td>
             </tr>
         </table>
         <div>

@@ -2875,26 +2875,10 @@ public class FillinDAO {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT Date FROM Date");
-        List<Fillin> fillins= new ArrayList<>();
+        List<Fillin> fillins = new ArrayList<>();
         Fillin fillin = null;
-        if (rs!= null){
-            while (rs.next()){
-                fillin = new Fillin();
-                fillin.setNameDate(rs.getString("date"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-    public List<Fillin> getDateName() throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Date FROM Date WHERE NOT EXISTS " +
-                "( SELECT Week FROM Fillin WHERE Date.Date = Fillin.Week AND IdStaffMember = 1) ");
-        List<Fillin> fillins= new ArrayList<>();
-        Fillin fillin = null;
-        if (rs!= null){
-            while (rs.next()){
+        if (rs != null) {
+            while (rs.next()) {
                 fillin = new Fillin();
                 fillin.setNameDate(rs.getString("date"));
                 fillins.add(fillin);
@@ -2903,7 +2887,24 @@ public class FillinDAO {
         return fillins;
     }
 
-    public List<Fillin> getDateNameId( int  IdStaffMember) throws SQLException {
+    public List<Fillin> getDateName() throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT Date FROM Date WHERE NOT EXISTS " +
+                "( SELECT Week FROM Fillin WHERE Date.Date = Fillin.Week AND IdStaffMember = 1) ");
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        if (rs != null) {
+            while (rs.next()) {
+                fillin = new Fillin();
+                fillin.setNameDate(rs.getString("date"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getDateNameId(int IdStaffMember) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT Date FROM Date WHERE NOT EXISTS " +
                 "( SELECT Week FROM Fillin WHERE Date.Date = Fillin.Week AND IdStaffMember = ?) ");
@@ -2920,5 +2921,4 @@ public class FillinDAO {
         }
         return fillins;
     }
-
 }

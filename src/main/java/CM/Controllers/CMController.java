@@ -1228,7 +1228,7 @@ public class CMController {
     @GetMapping("newMember")
     public String newMember(Model model, HttpSession session, StaffMember staffMember) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
-        model.addAttribute("newMember", staffMemberServices.getAddStaffMember(staffMember.getName(), staffMember.getAbbreviationName(), staffMember.getEmployeeId(), staffMember.getDepartment(), staffMember.getMobileNumber(), staffMember.getPrive(), staffMember.getCodePhoneNumber(), staffMember.getPhoneNumber(), staffMember.getAgentNumber()));
+        model.addAttribute("newMember", staffMemberServices.getAddStaffMember(staffMember.getName(), staffMember.getAbbreviationName(), staffMember.getEmployeeId(), staffMember.getDepartment(), staffMember.getMobileNumber(), staffMember.getPrive(), staffMember.getCodePhoneNumber(), staffMember.getPhoneNumber(), staffMember.getAgentNumber(), staffMember.getResponsible()));
         return "newMember";
     }
 

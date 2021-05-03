@@ -22,7 +22,7 @@ public class StaffMember {
     private String codePhoneNumber;
     private String phoneNumber;
     private String agentNumber;
-
+    private String responsible;
 
     public StaffMember(){
     }
@@ -139,6 +139,15 @@ public class StaffMember {
         return this;
     }
 
+    public String getResponsible() {
+        return responsible;
+    }
+
+    public StaffMember setResponsible(String responsible) {
+        this.responsible = responsible;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "StaffMember{" +
@@ -152,6 +161,7 @@ public class StaffMember {
                 ", codePhoneNumber='" + codePhoneNumber + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", agentenNumber=" + agentNumber +
+                ", responsible=" + responsible +
                 '}';
     }
 
@@ -167,6 +177,7 @@ public class StaffMember {
                 ", codePhoneNumber='" + codePhoneNumber + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", agentNumber=" + agentNumber +
+                ", responsible=" + responsible +
                 '}';
     }
 

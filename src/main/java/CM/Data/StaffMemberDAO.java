@@ -37,6 +37,7 @@ public class StaffMemberDAO {
                 staffMember.setCodePhoneNumber(rs.getString("CodePhoneNumber"));
                 staffMember.setPhoneNumber(rs.getString("PhoneNumber"));
                 staffMember.setAgentNumber(rs.getString("AgentNumber"));
+                staffMember.setResponsible(rs.getString("Responsible"));
             }
         }
         return staffMember;
@@ -61,15 +62,16 @@ public class StaffMemberDAO {
                 staffMember.setCodePhoneNumber(rs.getString("CodePhoneNumber"));
                 staffMember.setPhoneNumber(rs.getString("PhoneNumber"));
                 staffMember.setAgentNumber(rs.getString("AgentNumber"));
+                staffMember.setResponsible(rs.getString("Responsible"));
                 staffMembers.add(staffMember);
             }
         }
         return staffMembers;
     }
 
-    public  StaffMember getAddStaffMember(String name, String abbreviationName, String employeeId,String department, String mobileNumber, String prive, String codePhoneNumber, String phoneNumber, String agentNumber) throws SQLException {
+    public  StaffMember getAddStaffMember(String name, String abbreviationName, String employeeId,String department, String mobileNumber, String prive, String codePhoneNumber, String phoneNumber, String agentNumber, String responsible) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO StaffMembers (Id, Name, AbbreviationName, EmployeeId, Department, MobileNumber,Prive, CodePhoneNumber, PhoneNumber, AgentNumber)VALUES (Null, ? , ?, ?, ? , ? ,?, ?,?,? )");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO StaffMembers (Id, Name, AbbreviationName, EmployeeId, Department, MobileNumber,Prive, CodePhoneNumber, PhoneNumber, AgentNumber, Responsible)VALUES (Null, ? , ?, ?, ? , ? ,?, ?,?,?,? )");
         statement.setString(1, name);
         statement.setString(2, abbreviationName);
         statement.setString(3, employeeId);
@@ -79,7 +81,7 @@ public class StaffMemberDAO {
         statement.setString(7, codePhoneNumber);
         statement.setString(8, phoneNumber);
         statement.setString(9, agentNumber);
-
+        statement.setString(10, responsible);
         int rs = statement.executeUpdate();
         StaffMember staffMember = null;
         return staffMember;
@@ -88,7 +90,7 @@ public class StaffMemberDAO {
     public List<StaffMember> getAllStaffMember() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Name, AbbreviationName, EmployeeId, Department, MobileNumber, Prive, CodePhoneNumber, PhoneNumber,AgentNumber FROM StaffMembers");
+        ResultSet rs = statement.executeQuery("SELECT Name, AbbreviationName, EmployeeId, Department, MobileNumber, Prive, CodePhoneNumber, PhoneNumber,AgentNumber, Responsible FROM StaffMembers");
         List<StaffMember> staffMembers = new ArrayList<>();
         StaffMember staffMember = null;
         if (rs!= null){
@@ -103,6 +105,7 @@ public class StaffMemberDAO {
                 staffMember.setCodePhoneNumber(rs.getString("codePhoneNumber"));
                 staffMember.setPhoneNumber(rs.getString("phoneNumber"));
                 staffMember.setAgentNumber(rs.getString("agentNumber"));
+                staffMember.setResponsible(rs.getString("Responsible"));
                 staffMembers.add(staffMember);
             }
         }
