@@ -22,7 +22,7 @@ public class StaffMember {
     private String codePhoneNumber;
     private String phoneNumber;
     private String agentNumber;
-    private String responsible;
+    private String responsibility;
 
     public StaffMember(){
     }
@@ -139,12 +139,12 @@ public class StaffMember {
         return this;
     }
 
-    public String getResponsible() {
-        return responsible;
+    public String getResponsibility() {
+        return responsibility;
     }
 
-    public StaffMember setResponsible(String responsible) {
-        this.responsible = responsible;
+    public StaffMember setResponsibility(String responsibility) {
+        this.responsibility = responsibility;
         return this;
     }
 
@@ -161,7 +161,7 @@ public class StaffMember {
                 ", codePhoneNumber='" + codePhoneNumber + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", agentenNumber=" + agentNumber +
-                ", responsible=" + responsible +
+                ", responsibility=" + responsibility +
                 '}';
     }
 
@@ -177,7 +177,7 @@ public class StaffMember {
                 ", codePhoneNumber='" + codePhoneNumber + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", agentNumber=" + agentNumber +
-                ", responsible=" + responsible +
+                ", responsibility=" + responsibility +
                 '}';
     }
 

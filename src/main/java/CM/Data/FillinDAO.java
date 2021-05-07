@@ -687,6 +687,7 @@ public class FillinDAO {
         return fillins;
     }
 
+
     public List<Fillin> getTableFillinLCMMonPm(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.MonPmFunction,  Fillin.MonPmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='LCM' AND MonPmAbsent IS Null ORDER BY MonPmFunction ASC;");
@@ -2921,4 +2922,27 @@ public class FillinDAO {
         }
         return fillins;
     }
+
+    public List<Fillin> getTableFillinLCMMonAmTask(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.MonAmFunction, Fillin.MonAmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='LCM' AND MonAmAbsent IS Null ORDER BY MonAmFunction ASC;");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs != null) {
+            while (rs.next()) {
+                fillin = new Fillin();
+                staffMember = new StaffMember();
+                fillin.setName(rs.getString("name"));
+                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
+                fillin.setMonAmFunction(rs.getString("monAmFunction"));
+                fillin.setMonAmLocation(rs.getString("monAmLgetAllfunctionLCMocation"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
 }

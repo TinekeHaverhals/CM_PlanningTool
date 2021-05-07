@@ -29,8 +29,8 @@ public class StaffMemberServices {
         return staffMemberDAO.getPageByEmployeeId();
     }
 
-    public StaffMember getAddStaffMember (String name,String abbreviationName, String employeeId,String department, String mobileNumber, String prive, String codePhoneNumber, String phoneNumber, String agentNumber, String responsible) throws Exception {
-        return staffMemberDAO.getAddStaffMember(name, abbreviationName, employeeId, department, mobileNumber, prive, codePhoneNumber, phoneNumber, agentNumber,  responsible);
+    public StaffMember getAddStaffMember (String name,String abbreviationName, String employeeId,String department, String mobileNumber, String prive, String codePhoneNumber, String phoneNumber, String agentNumber, String responsibility) throws Exception {
+        return staffMemberDAO.getAddStaffMember(name, abbreviationName, employeeId, department, mobileNumber, prive, codePhoneNumber, phoneNumber, agentNumber,  responsibility);
     }
 
     public List<StaffMember> getAllStaffMember() throws SQLException {

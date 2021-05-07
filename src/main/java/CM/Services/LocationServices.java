@@ -29,8 +29,8 @@ public class LocationServices {
         return locationDAO.getdeleteLocation(locationName);
     }
 
-    public Location getAddLocation (String locationName) throws Exception {
-        return locationDAO.getAddLocation(locationName);
+    public Location getAddLocation (String locationName, String abbreviationLocation) throws Exception {
+        return locationDAO.getAddLocation(locationName, abbreviationLocation);
     }
 
 }

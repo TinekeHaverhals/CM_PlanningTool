@@ -44,49 +44,50 @@ public class CMController {
         return "index";
     }
 
+
     @PostMapping("login")
-    public String login2(@ModelAttribute("staffMember") StaffMember staffMemberReceived, HttpSession session) throws SQLException {
-        StaffMember staffMember = staffMemberServices.getUserByEmployeeId(staffMemberReceived.getEmployeeId());
-        if (staffMember != null) {
-            System.out.println("user has logged in");
-            session.setAttribute("staffMember", staffMember);
-            int id = staffMember.getId();
-            String department = staffMember.getDepartment();
-            if (id == 1) {
-                switch (department) {
-                    case "LCM":
-                        return "redirect:fillinLCM";
-                    case "VCM":
-                        return "redirect:fillinVCM";
-                    case "MCFG":
-                        return "redirect:fillinLMCFG";
-                    default:
-                        return "redirect:index";
+        public String login2(@ModelAttribute("staffMember") StaffMember staffMemberReceived, HttpSession session) throws SQLException {
+            StaffMember staffMember = staffMemberServices.getUserByEmployeeId(staffMemberReceived.getEmployeeId());
+            if (staffMember != null) {
+                System.out.println("user has logged in");
+                session.setAttribute("staffMember", staffMember);
+                String responsibility = staffMember.getResponsibility();
+                String department = staffMember.getDepartment();
+                if (responsibility.equals("Yes")) {
+                    switch (department) {
+                        case "LCM":
+                            return "redirect:fillinLCM";
+                        case "VCM":
+                            return "redirect:fillinVCM";
+                        case "MCFG":
+                            return "redirect:fillinMCFG";
+                        default:
+                            return "redirect:index";
+                    }
+                } else {
+                    switch (department) {
+                        case "LCM":
+                            return "redirect:fillinLCM2";
+                        case "VCM":
+                            return "redirect:fillinVCM2";
+                        case "MCFG":
+                            return "redirect:fillinMCFG2";
+                        default:
+                            return "redirect:index";
+                    }
                 }
-            } else {
-                switch (department) {
-                    case "LCM":
-                        return "redirect:fillinLCM2";
-                    case "VCM":
-                        return "redirect:fillinVCM2";
-                    case "MCFG":
-                        return "redirect:fillinMCFG2";
-                    default:
-                        return "redirect:index";
-                }
-            }
-        } else System.out.println("not logged in");
-        return "index";
-    }
+            } else System.out.println("not logged in");
+            return "index";
+        }
 
     //FILL IN
     @GetMapping("pageFillin")
     public String pageFillin(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
-        int id = staffMember.getId();
+        String responsibility = staffMember.getResponsibility();
         String department = staffMember.getDepartment();
-        System.out.println(id);
-        if (id == 1) {
+        System.out.println(responsibility);
+        if (responsibility.equals("Yes")) {
             switch (department) {
                 case "LCM":
                     return "redirect:fillinLCM";
@@ -105,6 +106,37 @@ public class CMController {
                     return "redirect:fillinVCM2";
                 case "MCFG":
                     return "redirect:fillinMCFG2";
+                default:
+                    return "redirect:index";
+            }
+        }
+    }
+
+    @GetMapping("changefillin")
+    public String changefillin(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        String responsibility = staffMember.getResponsibility();
+        String department = staffMember.getDepartment();
+        System.out.println(responsibility);
+        if (responsibility.equals("Yes")) {
+            switch (department) {
+                case "LCM":
+                    return "redirect:changefillinLCM";
+                case "VCM":
+                    return "redirect:changefillinVCM";
+                case "MCFG":
+                    return "redirect:changefillinMCFG";
+                default:
+                    return "redirect:index";
+            }
+        } else {
+            switch (department) {
+                case "LCM":
+                    return "redirect:changepagefillinLCM2";
+                case "VCM":
+                    return "redirect:changepagefillinVCM2";
+                case "MCFG":
+                    return "redirect:changepagefillinMCFG2";
                 default:
                     return "redirect:index";
             }
@@ -173,7 +205,7 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionVCM());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinVCM";
     }
@@ -186,7 +218,7 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionVCM());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinVCM";
     }
@@ -199,7 +231,7 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionVCM());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinVCM2";
     }
@@ -212,7 +244,7 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionVCM());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinVCM2";
     }
@@ -225,7 +257,7 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionMCFG());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinMCFG";
     }
@@ -238,7 +270,7 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionMCFG());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinMCFG";
     }
@@ -251,7 +283,7 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionMCFG());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinMCFG2";
     }
@@ -264,11 +296,166 @@ public class CMController {
         model.addAttribute("dateNamesId", fillinServices.getDateNameId(IdStaffMember));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionMCFG());
         model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "fillinMCFG2";
     }
 
+    @GetMapping("changepagefillinLCM")
+    public String changepagefillinLCM(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinLCM";
+    }
+
+    @GetMapping("changefillinLCM")
+    public String changefillinLCM(Model model, HttpSession session, Fillin fillin, Task task, Date date, Function function) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinLCM";
+    }
+
+    @GetMapping("changepagefillinLCM2")
+    public String changepagefillinLCM2(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinLCM2";
+    }
+
+    @GetMapping("changefillinLCM2")
+    public String changefillinLCM2(Model model, HttpSession session, Fillin fillin, Task task, Date date, Function function) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionLCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinLCM2";
+    }
+
+    @GetMapping("changepagefillinVCM")
+    public String changepagefillinVCM(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinLCM";
+    }
+
+    @GetMapping("changefillinVCM")
+    public String changefillinVCM(Model model, HttpSession session, Fillin fillin, Task task, Date date, Function function) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinVCM";
+    }
+
+    @GetMapping("changepagefillinVCM2")
+    public String changepagefillinVCM2(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinVCM2";
+    }
+
+    @GetMapping("changefillinVCM2")
+    public String changefillinVCM2(Model model, HttpSession session, Fillin fillin, Task task, Date date, Function function) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionVCMs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefilliVLCM2";
+    }
+
+    @GetMapping("changepagefillinMCFG")
+    public String changepagefillinMCFG(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionLCM());
+        model.addAttribute("newFillin", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinMCFG";
+    }
+
+    @GetMapping("changefillinMCFG")
+    public String changefillinMCFG(Model model, HttpSession session, Fillin fillin, Task task, Date date, Function function) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinMCFG";
+    }
+
+    @GetMapping("changepagefillinMCFG2")
+    public String changepagefillinMCFG2(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinMCFG2";
+    }
+
+    @GetMapping("changefillinMCFG2")
+    public String changefillinMCFG2(Model model, HttpSession session, Fillin fillin, Task task, Date date, Function function) throws Exception {
+        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("tasks", tasksServices.getTableTask());
+        model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("functionMCFGs", functionServices.getAllfunctionLCM());
+        model.addAttribute("change", fillinServices.getAddFillin(fillin.getIdStaffMember(), fillin.getWeek(), fillin.getDepartment(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        return "changefillinMCFG2";
+    }
     //LCM
     @GetMapping("lcm")
     public String lcm(Model model, HttpSession session, Fillin fillin, DateName dateName) throws SQLException {
@@ -1104,7 +1291,7 @@ public class CMController {
     @GetMapping("newlocation")
     public String newlocation(Model model, HttpSession session, Location location) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
-        model.addAttribute("newlocation", locationServices.getAddLocation(location.getLocationName()));
+        model.addAttribute("newlocation", locationServices.getAddLocation(location.getLocationName(), location.getAbbreviationLocation()));
         return "newlocation";
     }
 
@@ -1228,7 +1415,7 @@ public class CMController {
     @GetMapping("newMember")
     public String newMember(Model model, HttpSession session, StaffMember staffMember) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
-        model.addAttribute("newMember", staffMemberServices.getAddStaffMember(staffMember.getName(), staffMember.getAbbreviationName(), staffMember.getEmployeeId(), staffMember.getDepartment(), staffMember.getMobileNumber(), staffMember.getPrive(), staffMember.getCodePhoneNumber(), staffMember.getPhoneNumber(), staffMember.getAgentNumber(), staffMember.getResponsible()));
+        model.addAttribute("newMember", staffMemberServices.getAddStaffMember(staffMember.getName(), staffMember.getAbbreviationName(), staffMember.getEmployeeId(), staffMember.getDepartment(), staffMember.getMobileNumber(), staffMember.getPrive(), staffMember.getCodePhoneNumber(), staffMember.getPhoneNumber(), staffMember.getAgentNumber(), staffMember.getResponsibility()));
         return "newMember";
     }
 

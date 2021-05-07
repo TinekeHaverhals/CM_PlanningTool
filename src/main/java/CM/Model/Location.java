@@ -14,6 +14,7 @@ public class Location {
     @GeneratedValue
     private int id;
     private String locationName;
+    private String abbreviationLocation;
 
     public Location(){
 
@@ -38,6 +39,15 @@ public class Location {
 
     public Location setLocationName(String locationName) {
         this.locationName = locationName;
+        return this;
+    }
+
+    public String getAbbreviationLocation() {
+        return abbreviationLocation;
+    }
+
+    public Location setAbbreviationLocation(String abbreviationLocation) {
+        this.abbreviationLocation = abbreviationLocation;
         return this;
     }
 }

@@ -19,23 +19,25 @@ public class LocationDAO {
     public List<Location> getTableLocation() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT LocationName FROM Location");
+        ResultSet rs = statement.executeQuery("SELECT LocationName, abbreviationLocation FROM Location");
         List<Location> locations= new ArrayList<>();
         Location location = null;
         if (rs!= null){
             while (rs.next()){
                 location = new Location();
                 location.setLocationName(rs.getString("locationName"));
+                location.setAbbreviationLocation(rs.getString("abbreviationLocation"));
                 locations.add(location);
             }
         }
         return locations;
     }
 
-    public Location getAddLocation (String locationName) throws SQLException{
+    public Location getAddLocation (String locationName, String abbreviationLocation) throws SQLException{
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO Location (Id, LocationName) VALUES (null, ?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Location (Id, LocationName, AbbreviationLocation) VALUES (null, ?,?)");
         statement.setString(1, locationName);
+        statement.setString(2, abbreviationLocation);
         int rs = statement.executeUpdate();
         Location location = null;
         return location;

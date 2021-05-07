@@ -21,7 +21,7 @@ public class FunctionDAO {
     public List<Function> getAllfunction() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total FROM Functions");
+        ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total FROM Functions ORDER BY Department ASC");
         List<Function> functions = new ArrayList<>();
         Function function = null;
         if (rs!= null){
@@ -40,6 +40,26 @@ public class FunctionDAO {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total FROM Functions WHERE Department ='LCM'");
+        List<Function> functionLCMs = new ArrayList<>();
+        Function function = null;
+        if (rs!= null){
+            while (rs.next()){
+                function = new Function();
+                function.setDepartment(rs.getString("department"));
+                function.setNamefunction(rs.getString("namefunction"));
+                function.setTotal(rs.getInt("total"));
+                functionLCMs.add(function);
+            }
+        }
+        return functionLCMs;
+    }
+
+    public List<Function> getAllfunctionLCMASC() throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total " +
+                "FROM Functions " +
+                "WHERE Department ='LCM'");
         List<Function> functionLCMs = new ArrayList<>();
         Function function = null;
         if (rs!= null){
