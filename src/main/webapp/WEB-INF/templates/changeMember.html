@@ -1,11 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <link rel="STYLESHEET" href="css/css.css" type="text/css">
 
 <head>
-    <title>All absent by department</title>
+    <title>Change a Member</title>
 </head>
 
 <body>
@@ -74,57 +73,27 @@
     </div>
 </div>
 
-<div  class= "tableTask">
-    <form th:action="@{searchAllDataAbsentDepartment}">
-        <label for="week">Choose a week:</label>
-        <select name="week" id="week">
-            <option th:each="dateName: ${dateNames}">[[${dateName.nameDate}]]</option>
-        </select>
-       <label for="department">Department</label>
-        <select name="department" id="department">
-            <option value="LCM">LCM</option>
-            <option value="VCM">VCM</option>
-            <option value="MCFG">MCFG</option>
-        </select>
-        <input type="submit" class="registerbtn" value="search">
-    </form>
-
-    <br>
-    <br>
-
-    <table id="t01">
-        <tr>
-            <th>Week</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>mon Am</th>
-            <th>mon PM</th>
-            <th>tue Am</th>
-            <th>tue PM</th>
-            <th>wed Am</th>
-            <th>wed PM</th>
-            <th>thu Am</th>
-            <th>thu PM</th>
-            <th>fri Am</th>
-            <th>fri PM</th>
-        </tr>
-
-        <tr th:each="fillin: ${searchAllDataAbsentDepartment}">
-            <td>[[${fillin.week}]]</td>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.department}]]</td>
-            <td>[[${fillin.monAmAbsent}]]</td>
-            <td>[[${fillin.monPmAbsent}]]</td>
-            <td>[[${fillin.tueAmAbsent}]]</td>
-            <td>[[${fillin.tuePmAbsent}]]</td>
-            <td>[[${fillin.wedAmAbsent}]]</td>
-            <td>[[${fillin.wedPmAbsent}]]</td>
-            <td>[[${fillin.thuAmAbsent}]]</td>
-            <td>[[${fillin.thuPmAbsent}]]</td>
-            <td>[[${fillin.friAmAbsent}]]</td>
-            <td>[[${fillin.friPmAbsent}]]</td>
-        </tr>
-    </table>
+<div class="add">
+    <div class="delete">
+        <h1>Change the responsibility </h1>
+        <div class="register">
+            <form th:action="@{changeMember}">
+                <div class="container">
+                    <label><b>Employee Number</b></label>
+                    <input type="text" name="employeeId">
+                    <label><b>responsibility</b></label>
+                    <br>
+                    <input type="radio" name="responsibility" value="Yes" id="Yes">Yes
+                    <br>
+                    <input type="radio" name="responsibility" value="No" id="No">No
+                    <br>
+                    <br>
+                    <input type="submit" class="registerbtn" value="Change">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
+
 </html>

@@ -44,4 +44,8 @@ public class StaffMemberServices {
     public  StaffMember getSearch(String employeeId) throws SQLException {
         return staffMemberDAO.getSearch(employeeId);
     }
+
+    public StaffMember getChangeMember(String employeeId, String responsibility) throws SQLException {
+        return staffMemberDAO.getChangeMember(employeeId, responsibility);
+    }
 }

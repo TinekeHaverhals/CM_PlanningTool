@@ -32,5 +32,25 @@ public class DateNameDAO {
         }
         return dateNames;
     }
+
+    public DateName getAddDate(String nameDate, String monthBegin, String monthEnd) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Date (Id, Date, MonthBegin, MonthEnd)VALUES (Null, ? , ?, ?)");
+        statement.setString(1, nameDate);
+        statement.setString(2, monthBegin);
+        statement.setString(3, monthEnd);
+        int rs = statement.executeUpdate();
+        DateName dateName = null;
+        return dateName;
+    }
+
+    public DateName getDeleteDate(String nameDate) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("DELETE FROM Date Where Date = ?");
+        statement.setString(1, nameDate);
+        int rs = statement.executeUpdate();
+        DateName dateName = null;
+        return dateName;
+    }
 }
 

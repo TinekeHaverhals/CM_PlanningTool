@@ -23,4 +23,11 @@ public class DateNameServices {
             return dateNameDAO.getAllDateName();
         }
 
+    public DateName getAddDate(String nameDate, String monthBegin, String monthEnd) throws SQLException{
+        return  dateNameDAO.getAddDate(nameDate, monthBegin, monthEnd);
+    }
+
+    public Object getDeleteDate(String nameDate) throws SQLException{
+        return  dateNameDAO.getDeleteDate(nameDate);
+    }
 }

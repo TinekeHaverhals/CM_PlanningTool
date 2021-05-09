@@ -136,4 +136,13 @@ public class StaffMemberDAO {
         return staffMember;
     }
 
+    public StaffMember getChangeMember(String employeeId, String responsibility) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("UPDATE StaffMembers SET Responsibility = ? WHERE EmployeeId = ?");
+        statement.setString(1, responsibility);
+        statement.setString(2, employeeId);
+        int rs = statement.executeUpdate();
+        StaffMember staffMember = null;
+        return staffMember;
+    }
 }
