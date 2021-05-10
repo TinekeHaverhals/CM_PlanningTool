@@ -95,6 +95,43 @@ public class FillinServices {
     public List<Fillin> getTableFillinVCMFriPm(String week)throws SQLException {
         return fillinDAO.getTableFillinVCMFriPm(week);
     }
+
+    public List<Fillin> getTableFillinMCFGMonAm(String week) throws SQLException {
+        return fillinDAO.getTableFillinMCFGMonAm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGMonPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGMonPm(week);
+    }
+    public List<Fillin> getTableFillinMCFGTueAm(String week) throws SQLException {
+        return fillinDAO.getTableFillinMCFGTueAm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGTuePm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTuePm(week);
+    }
+    public List<Fillin> getTableFillinMCFGWedAm(String week) throws SQLException {
+        return fillinDAO.getTableFillinMCFGWedAm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGWedPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGWedPm(week);
+    }
+    public List<Fillin> getTableFillinMCFGThuAm(String week) throws SQLException {
+        return fillinDAO.getTableFillinMCFGThuAm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGThuPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGThuPm(week);
+    }
+    public List<Fillin> getTableFillinMCFGFriAm(String week) throws SQLException {
+        return fillinDAO.getTableFillinMCFGFriAm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGFriPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGFriPm(week);
+    }
+
     public List<Fillin>  getTableFillinLCMAbsentMon(String week)throws SQLException {
         return fillinDAO. getTableFillinLCMAbsentMon(week);
     }
@@ -131,6 +168,25 @@ public class FillinServices {
     }
     public List<Fillin>  getTableFillinVCMAbsentFri(String week)throws SQLException {
         return fillinDAO. getTableFillinVCMAbsentFri(week);
+    }
+
+    public List<Fillin>  getTableFillinMCFGAbsentMon(String week)throws SQLException {
+        return fillinDAO. getTableFillinMCFGAbsentMon(week);
+    }
+
+    public List<Fillin>  getTableFillinMCFGAbsentTue(String week)throws SQLException {
+        return fillinDAO. getTableFillinMCFGAbsentTue(week);
+    }
+
+    public List<Fillin>  getTableFillinMCFGAbsentWed(String week)throws SQLException {
+        return fillinDAO. getTableFillinMCFGAbsentWed(week);
+    }
+
+    public List<Fillin>  getTableFillinMCFGAbsentThu(String week)throws SQLException {
+        return fillinDAO. getTableFillinMCFGAbsentThu(week);
+    }
+    public List<Fillin>  getTableFillinMCFGAbsentFri(String week)throws SQLException {
+        return fillinDAO. getTableFillinMCFGAbsentFri(week);
     }
 
     public List<Fillin> getTableFillinVCM() throws SQLException {
@@ -273,6 +329,41 @@ public class FillinServices {
     }
     public List<Fillin> getTableFillinVCMTaskFriPm(String week)throws SQLException {
         return fillinDAO.getTableFillinVCMTaskFriPm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGTaskMonAm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskMonAm(week);
+    }
+    public List<Fillin> getTableFillinMCFGTaskMonPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskMonPm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGTaskTueAm(String week)throws SQLException {
+        return fillinDAO.getTableFillinLCMTaskTueAm(week);
+    }
+    public List<Fillin> getTableFillinMCFGTaskTuePm(String week)throws SQLException {
+        return fillinDAO.getTableFillinLCMTaskTuePm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGTaskWedAm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskWedAm(week);
+    }
+    public List<Fillin> getTableFillinMCFGTaskWedPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskWedPm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGTaskThuAm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskThuAm(week);
+    }
+    public List<Fillin> getTableFillinMCFGTaskThuPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskThuPm(week);
+    }
+
+    public List<Fillin> getTableFillinMCFGTaskFriAm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskFriAm(week);
+    }
+    public List<Fillin> getTableFillinMCFGTaskFriPm(String week)throws SQLException {
+        return fillinDAO.getTableFillinMCFGTaskFriPm(week);
     }
 
     public List<Fillin> getTableFillinMonAm(String week) throws SQLException {
