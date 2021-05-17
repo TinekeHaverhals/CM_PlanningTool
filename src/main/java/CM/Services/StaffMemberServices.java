@@ -24,8 +24,7 @@ public class StaffMemberServices {
         return staffMemberDAO.getUserByEmployeeId(employeeId);
     }
 
-    public  List<StaffMember>
-    getPageByEmployeeId() throws SQLException {
+    public  List<StaffMember> getPageByEmployeeId() throws SQLException {
         return staffMemberDAO.getPageByEmployeeId();
     }
 
@@ -47,5 +46,15 @@ public class StaffMemberServices {
 
     public StaffMember getChangeMember(String employeeId, String responsibility) throws SQLException {
         return staffMemberDAO.getChangeMember(employeeId, responsibility);
+    }
+
+    public List<StaffMember> getAllStaffMemberLCM() throws SQLException {
+        return staffMemberDAO.getAllStaffMemberLCM();
+    }
+    public List<StaffMember> getAllStaffMemberMCFG() throws SQLException {
+        return staffMemberDAO.getAllStaffMemberMCFG();
+    }
+    public List<StaffMember> getAllStaffMemberVCM() throws SQLException {
+        return staffMemberDAO.getAllStaffMemberVCM();
     }
 }

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="STYLESHEET" href="css/css.css" type="text/css">
+
+<head>
+    <title>Change fill in: Thursday</title>
+</head>
+
+<body>
+<div class="navbar">
+    <div class="dropdown">
+        <img src="images/cm2.png" alt="CM" width="70" height="70">
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Fill in
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/pageFillin">Fill in</a>
+            <a href="/changeoption">Change fill in</a>
+            <a href="/changeotherId">Fill in other id</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Own data
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/ownData">Tasks and absent</a>
+            <a href="/ownDataAbsent">List absent</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Information
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/schema">Completed table</a>
+            <a href="/lcm">LCM</a>
+            <a href="/vcm">VCM</a>
+            <a href="/mcfg">MCFG</a>
+            <a href="/allAbsent">Absent: all members</a>
+            <a href="/alltasksallmember">Tasks: all members</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">List all members
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/allStaffMember">List all members</a>
+            <a href="/alltask">list: all tasks</a>
+            <a href="/allfunction">list: all functions</a>
+            <a href="/alllocation">list: all locations</a>
+            <a href="/alldateName">list: all date</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">CheckList
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/check">Checklist</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Sign out
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/signOut">Sign out</a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="fillin">
+    <form th:action="@{changefillinThursdayLCM}">
+    <label for="week">Choose a week:</label>
+    <select name="week" id="week">
+        <option th:each="fillin: ${dateNames}">[[${fillin.nameDate}]]</option>
+    </select>
+    <br>
+    <br>
+    <p>You only have to choose a task if your function is tasks</p>
+    <h3><u>Thursday</u> </h3>
+    <label>AM :</label>
+    <input TYPE="checkbox" NAME="thuAmAbsent" VALUE="Absent">absent
+    <label for="thuAmFunction" >Choose a function :</label>
+    <select name="thuAmFunction" id="thuAmFunction" >
+        <option value="" >Choose a function</option>
+        <option th:each="function: ${functionLCMs}">[[${function.namefunction}]]</option>
+    </select>
+    <label for="thuAmTask" >Choose a task :</label>
+    <select name="thuAmTask" id="thuAmTask" >
+        <option value="" >Choose a task</option>
+        <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
+    </select>
+    <label for="thuAmLocation">Choose a location :</label>
+    <select name="thuAmLocation" id="thuAmLocation">
+        <option value="" >Choose a Location</option>
+        <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
+    </select>
+    <br>
+    <label>PM : </label>
+    <input TYPE="checkbox" NAME="thuPmAbsent" VALUE="Absent">absent
+    <label for="thuPmFunction" >Choose a function :</label>
+    <select name="thuPmFunction" id="thuPmFunction" >
+        <option value="" >Choose a function</option>
+        <option th:each="function: ${functionLCMs}">[[${function.namefunction}]]</option>
+    </select>
+    <label for="thuPmTask" >Choose a task :</label>
+    <select name="thuPmTask" id="thuPmTask" >
+        <option value="" >Choose a task</option>
+        <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
+    </select>
+    <label for="thuPmLocation">Choose a location :</label>
+    <select name="thuPmLocation" id="thuPmLocation">
+        <option value="" >Choose a location</option>
+        <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
+    </select>
+    <div>
+        <input type="submit" class="registerbtn" value="submit">
+    </div>
+    </form>
+</div>
+</body>
+
+</html>

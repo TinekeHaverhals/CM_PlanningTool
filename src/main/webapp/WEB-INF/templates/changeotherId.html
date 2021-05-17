@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="STYLESHEET" href="css/css.css" type="text/css">
+
+<head>
+    <title>Change fill in for other ID </title>
+</head>
+
+<body>
+<div class="navbar">
+    <div class="dropdown">
+        <img src="images/cm2.png" alt="CM" width="70" height="70">
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Fill in
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/pageFillin">Fill in</a>
+            <a href="/changeoption">Change fill in</a>
+            <a href="/changeotherId">Fill in other id</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Own data
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/ownData">Tasks and absent</a>
+            <a href="/ownDataAbsent">List absent</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Information
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/schema">Completed table</a>
+            <a href="/lcm">LCM</a>
+            <a href="/vcm">VCM</a>
+            <a href="/mcfg">MCFG</a>
+            <a href="/allAbsent">Absent: all members</a>
+            <a href="/alltasksallmember">Tasks: all members</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">List all members
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/allStaffMember">List all members</a>
+            <a href="/alltask">list: all tasks</a>
+            <a href="/allfunction">list: all functions</a>
+            <a href="/alllocation">list: all locations</a>
+            <a href="/alldateName">list: all date</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">CheckList
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/check">Checklist</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Sign out
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/signOut">Sign out</a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="fillin">
+    <h2>LCM</h2>
+    <form action="/changeotherIdPageLCM">
+        <button class="button button1">LCM</button>
+    </form>
+    <h2>VCM</h2>
+    <form action="/changeotherIdPageVCM">
+        <button class="button button1">VCM</button>
+    </form>
+    <h2>MCFG</h2>
+    <form action="/changeotherIdePageMCFG">
+        <button class="button button1">MCFG</button>
+    </form>
+</div>
+</body>
+
+</html>

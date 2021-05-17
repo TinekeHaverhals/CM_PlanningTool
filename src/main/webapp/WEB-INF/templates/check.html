@@ -18,7 +18,8 @@
             </button>
             <div class="dropdown-content">
                 <a href="/pageFillin">Fill in</a>
-                <a href="/changefillin">Change fill in</a>
+                <a href="/changeoption">Change fill in</a>
+                <a href="/changeotherId">Fill in other id</a>
             </div>
         </div>
         <div class="dropdown">
@@ -80,9 +81,6 @@
             </select>
             <input type="submit" class="registerbtn" value="search">
         </form>
-        <br>
-        <br>
-
             <h1>List Members</h1>
             <table id="t01">
                 <tr>
@@ -95,6 +93,86 @@
                     <td>[[${fillin.department}]]</td>
                 </tr>
             </table>
+
+        <h1>List functions</h1>
+        <table id="t02" >
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+            </tr>
+            <tr>
+                <th colspan="2">MonAM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionMonAm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">MonPM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionMonPm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">TueAM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionTueAm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">TuePM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionTuePm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">WedAM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionWedAm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">WedPM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionWedPm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">ThuAM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionThuAm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">ThuPM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionThuPm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">FriAM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionFriAm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+            <tr>
+                <th colspan="2">FriPM</th>
+            </tr>
+            <tr th:each="fillin: ${searchCheckFunctionFriPm}">
+                <td>[[${fillin.namefunction}]]</td>
+                <td>[[${fillin.department}]]</td>
+            </tr>
+
+        </table>
+    </div>
 </body>
 
 </html>

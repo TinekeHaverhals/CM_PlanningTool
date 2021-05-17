@@ -19,6 +19,8 @@ public class Fillin {
     private String week;
     private String month;
     private String department;
+    private String namefunction;
+    private String nameMember;
 
     private String nameDate;
     private String monthBegin;
@@ -74,16 +76,16 @@ public class Fillin {
     private String friPmLocation;
     private String friPmAbsent;
 
-    public Fillin(){
+    public Fillin() {
 
     }
 
-    public Fillin(String week, String department, String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent ){
-        this.week= week;
+    public Fillin(String week, String department, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent) {
+        this.week = week;
         this.department = department;
         this.monAmFunction = monAmFunction;
         this.monAmTask = monAmTask;
-        this.monAmLocation =monAmLocation;
+        this.monAmLocation = monAmLocation;
         this.monAmAbsent = monAmAbsent;
         this.monPmFunction = monPmFunction;
         this.monPmTask = monPmTask;
@@ -91,19 +93,19 @@ public class Fillin {
         this.monPmAbsent = monPmAbsent;
     }
 
-    public Fillin(String week, String department,String monAmAbsent, String monPmAbsent, String tueAmAbsent, String tuePmAbsent, String wedAmAbsent, String wedPmAbsent, String thuAmAbsent, String thuPmAbsent, String friAmAbsent, String friPmAbsent){
-        this.week= week;
+    public Fillin(String week, String department, String monAmAbsent, String monPmAbsent, String tueAmAbsent, String tuePmAbsent, String wedAmAbsent, String wedPmAbsent, String thuAmAbsent, String thuPmAbsent, String friAmAbsent, String friPmAbsent) {
+        this.week = week;
         this.department = department;
         this.name = name;
-        this.monAmAbsent= monAmAbsent;
+        this.monAmAbsent = monAmAbsent;
         this.monPmAbsent = monAmAbsent;
-        this.tueAmAbsent= tueAmAbsent;
+        this.tueAmAbsent = tueAmAbsent;
         this.tuePmAbsent = tueAmAbsent;
-        this.wedAmAbsent= wedAmAbsent;
+        this.wedAmAbsent = wedAmAbsent;
         this.wedPmAbsent = wedAmAbsent;
-        this.thuAmAbsent= thuAmAbsent;
+        this.thuAmAbsent = thuAmAbsent;
         this.thuPmAbsent = thuAmAbsent;
-        this.friAmAbsent= friAmAbsent;
+        this.friAmAbsent = friAmAbsent;
         this.friPmAbsent = friAmAbsent;
     }
 
@@ -545,6 +547,24 @@ public class Fillin {
 
     public Fillin setFriPmAbsent(String friPmAbsent) {
         this.friPmAbsent = friPmAbsent;
+        return this;
+    }
+
+    public String getNamefunction() {
+        return namefunction;
+    }
+
+    public Fillin setNamefunction(String namefunction) {
+        this.namefunction = namefunction;
+        return this;
+    }
+
+    public String getNameMember() {
+        return nameMember;
+    }
+
+    public Fillin setNameMember(String nameMember) {
+        this.nameMember = nameMember;
         return this;
     }
 }

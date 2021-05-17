@@ -4,7 +4,7 @@
 <link rel="STYLESHEET" href="css/css.css" type="text/css">
 
 <head>
-    <title>Fill in LCM </title>
+    <title>Fill in LCM</title>
 </head>
 
 <body>
@@ -18,7 +18,8 @@
         </button>
         <div class="dropdown-content">
             <a href="/pageFillin">Fill in</a>
-            <a href="/changefillin">Change fill in</a>
+            <a href="/changeoption">Change fill in</a>
+            <a href="/changeotherId">Fill in other id</a>
         </div>
     </div>
     <div class="dropdown">
@@ -258,7 +259,7 @@
             <label for="friPmFunction" >Choose a function :</label>
             <select name="friPmFunction" id="friPmFunction" >
                 <option value="" >Choose a function</option>
-                <option th:each="function: ${functionLCMs}">[[${function.namefunction}]]</option>
+                <option th:each="function: ${functionLCM}">[[${function.namefunction}]]</option>
             </select>
             <label for="friPmTask" >Choose a task :</label>
             <select name="friPmTask" id="friPmTask" >

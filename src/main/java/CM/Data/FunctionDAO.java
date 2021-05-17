@@ -1,9 +1,6 @@
 package CM.Data;
 
-import CM.Model.Absent;
-import CM.Model.Function;
-import CM.Model.StaffMember;
-import CM.Model.Task;
+import CM.Model.*;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -39,53 +36,29 @@ public class FunctionDAO {
     public List<Function> getAllfunctionLCM() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total FROM Functions WHERE Department ='LCM'");
-        List<Function> functionLCMs = new ArrayList<>();
-        Function function = null;
-        if (rs!= null){
-            while (rs.next()){
-                function = new Function();
-                function.setDepartment(rs.getString("department"));
-                function.setNamefunction(rs.getString("namefunction"));
-                function.setTotal(rs.getInt("total"));
-                functionLCMs.add(function);
-            }
-        }
-        return functionLCMs;
-    }
-
-    public List<Function> getAllfunctionLCMASC() throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total " +
-                "FROM Functions " +
-                "WHERE Department ='LCM'");
-        List<Function> functionLCMs = new ArrayList<>();
-        Function function = null;
-        if (rs!= null){
-            while (rs.next()){
-                function = new Function();
-                function.setDepartment(rs.getString("department"));
-                function.setNamefunction(rs.getString("namefunction"));
-                function.setTotal(rs.getInt("total"));
-                functionLCMs.add(function);
-            }
-        }
-        return functionLCMs;
-    }
-
-    public List<Function> getAllfunctionVCM() throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total FROM Functions WHERE Department ='VCM'");
+        ResultSet rs = statement.executeQuery("SELECT NameFunction FROM Functions WHERE Department = 'LCM';");
         List<Function> functionVCMs = new ArrayList<>();
         Function function = null;
         if (rs!= null){
             while (rs.next()){
                 function = new Function();
-                function.setDepartment(rs.getString("department"));
                 function.setNamefunction(rs.getString("namefunction"));
-                function.setTotal(rs.getInt("total"));
+                functionVCMs.add(function);
+            }
+        }
+        return functionVCMs;
+    }
+
+    public List<Function> getAllfunctionVCM() throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT NameFunction FROM Functions WHERE Department = 'VCM';");
+        List<Function> functionVCMs = new ArrayList<>();
+        Function function = null;
+        if (rs!= null){
+            while (rs.next()){
+                function = new Function();
+                function.setNamefunction(rs.getString("namefunction"));
                 functionVCMs.add(function);
             }
         }
@@ -95,15 +68,13 @@ public class FunctionDAO {
     public List<Function> getAllfunctionMCFG() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Department, Namefunction, Total FROM Functions WHERE Department ='MCFG'");
+        ResultSet rs = statement.executeQuery("SELECT NameFunction FROM Functions WHERE Department = 'MCFG';");
         List<Function> functionMCFGs = new ArrayList<>();
         Function function = null;
         if (rs!= null){
             while (rs.next()){
                 function = new Function();
-                function.setDepartment(rs.getString("department"));
                 function.setNamefunction(rs.getString("namefunction"));
-                function.setTotal(rs.getInt("total"));
                 functionMCFGs.add(function);
             }
         }
