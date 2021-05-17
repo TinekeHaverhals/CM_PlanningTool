@@ -367,7 +367,7 @@ public class CMController {
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionVCMs", functionServices.getAllfunctionVCM());
         model.addAttribute("changeVCM", fillinServices.getChangeFillin(IdStaffMember, fillin.getWeek(), fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
-        return "changefilliVLCM2";
+        return "changefillinVCM2";
     }
 
     @GetMapping("changepagefillinMCFG")
@@ -1632,11 +1632,11 @@ public class CMController {
         } else {
             switch (department) {
                 case "LCM":
-                    return "redirect:changepageMondayLCM2";
+                    return "redirect:changepagemondayLCM2";
                 case "VCM":
-                    return "redirect:changepageMondayVCM2";
+                    return "redirect:changepagemondayVCM2";
                 case "MCFG":
-                    return "redirect:changepageMondayMCFG2";
+                    return "redirect:changepagemondayMCFG2";
                 default:
                     return "redirect:index";
             }
@@ -1768,7 +1768,7 @@ public class CMController {
         return "changeMondayMCFG";
     }
 
-    @GetMapping("changepagemondayMCFGM2")
+    @GetMapping("changepagemondayMCFG2")
     public String changepagemondayMCFG2(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
@@ -1947,7 +1947,7 @@ public class CMController {
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionMCFGs", functionServices.getAllfunctionMCFG());
         model.addAttribute("changeTuesdayMCFG", fillinServices.getChangeTuesday(IdStaffMember, fillin.getWeek(),fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent()));
-        return "changeMondayMCFG";
+        return "changeTuesdayMCFG";
     }
 
     @GetMapping("changepagetuesdayMCFG2")
@@ -1972,7 +1972,7 @@ public class CMController {
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionMCFGs", functionServices.getAllfunctionMCFG());
         model.addAttribute("changeTuesdayMCFG", fillinServices.getChangeTuesday(IdStaffMember, fillin.getWeek(),fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent()));
-        return "changeMondayMCFG2";
+        return "changeTuesdayMCFG2";
     }
 
     @GetMapping("changewednesday")
@@ -2131,7 +2131,7 @@ public class CMController {
         return "changeWednesdayMCFG";
     }
 
-    @GetMapping("changepagewednesdayMCFGM2")
+    @GetMapping("changepagewednesdayMCFG2")
     public String changepagewednesdayMCFG2(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
@@ -2245,7 +2245,7 @@ public class CMController {
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionVCMs", functionServices.getAllfunctionVCM());
-        return "changethursdayVCM";
+        return "changeThursdayVCM";
     }
 
     @GetMapping("changefillinThursdayVCM")
@@ -2311,7 +2311,7 @@ public class CMController {
         return "changeThursdayMCFG";
     }
 
-    @GetMapping("changepagethursdayMCFGM2")
+    @GetMapping("changepagethursdayMCFG2")
     public String changepagethursdayMCFG2(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
@@ -2491,9 +2491,10 @@ public class CMController {
         return "changeFridayMCFG";
     }
 
-    @GetMapping("changepagefridayMCFGM2")
+    @GetMapping("changepagefridayMCFG2")
     public String changepagefridayMCFG2(Model model, HttpSession session, Fillin fillin, Task task, Function function, DateName dateName) throws Exception {
-        model.addAttribute("staffMember", session.getAttribute("staffMember"));
+        model.addAttribute("staffMember",
+                session.getAttribute("staffMember"));
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());

@@ -90,7 +90,7 @@
     <label for="monAmFunction" >Choose a function :</label>
     <select name="monAmFunction" id="monAmFunction" >
         <option value="" >Choose a function</option>
-        <option th:each="function: ${functionLCMs}">[[${function.namefunction}]]</option>
+        <option th:each="function: ${functionMCFGs}">[[${function.namefunction}]]</option>
     </select>
 
     <label for="monAmTask" >Choose a task :</label>
@@ -110,7 +110,7 @@
     <label for="monPmFunction" >Choose a function :</label>
     <select name="monPmFunction" id="monPmFunction" >
         <option value="" >Choose a function</option>
-        <option th:each="function: ${functionLCMs}">[[${function.namefunction}]]</option>
+        <option th:each="function: ${functionMCFGs}">[[${function.namefunction}]]</option>
     </select>
     <label for="monPmTask" >Choose a task :</label>
     <select name="monPmTask" id="monPmTask" >

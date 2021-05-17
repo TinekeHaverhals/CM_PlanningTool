@@ -54,10 +54,15 @@
 </div>
 <br>
 <div class="fillin">
-
+    <form th:action="@{newFillinLCM2}">
         <div>
+            <label for="week">Choose a week:</label>
+            <select name="week" id="week">
+                <option th:each="fillin: ${dateNamesId}">[[${fillin.nameDate}]]</option>
+            </select>
+            <br>
+            <br>
             <p>You only have to choose a task if your function is tasks</p>
-            <form th:action="@{newFillinLCM2}">
             <h3><u>Monday</u> </h3>
             <label>AM :</label>
             <input TYPE="checkbox" NAME="monAmAbsent" VALUE="Absent">absent

@@ -3289,7 +3289,7 @@ public class FillinDAO {
 
     public Fillin getChangeFriday(int idStaffMember, String week, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("UPDATE Fillin SET FriAmFunction = ?, FriAmTask = ?,FriAmLocation = ? ,FriAmAbsent = ?,FriPmFunction =  ?,ThuPmTask = ?,FriPmLocation = ? ,FriPmAbsent =  ? WHERE IdStaffMember = ? AND Week =?");
+        PreparedStatement statement = connection.prepareStatement("UPDATE Fillin SET FriAmFunction = ?, FriAmTask = ?,FriAmLocation = ? ,FriAmAbsent = ?,FriPmFunction =  ?,FriPmTask = ?,FriPmLocation = ? ,FriPmAbsent =  ? WHERE IdStaffMember = ? AND Week =?");
         statement.setString(1, friAmFunction);
         statement.setString(2, friAmTask);
         statement.setString(3, friAmLocation);

@@ -54,7 +54,7 @@
 </div>
 <br>
 <div class="fillin">
-    <form th:action="@{changefillinVCM}">
+    <form th:action="@{changefillinVCM2}">
         <div>
             <label for="week">Choose a week:</label>
             <select name="week" id="week">
@@ -127,7 +127,7 @@
             <label for="tuePmFunction" >Choose a function :</label>
             <select name="tuePmFunction" id="tuePmFunction" >
                 <option value="" >Choose a function</option>
-                <option th:each="function: ${functionLVCMs}" >[[${function.namefunction}]]</option>
+                <option th:each="function: ${functionVCMs}" >[[${function.namefunction}]]</option>
             </select>
             <label for="tuePmTask" >Choose a task :</label>
             <select name="tuePmTask" id="tuePmTask" >
