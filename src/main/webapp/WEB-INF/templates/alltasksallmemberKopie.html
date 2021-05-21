@@ -9,89 +9,75 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="dropdown">
-            <img src="images/cm2.png" alt="CM" width="70" height="70">
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Fill in
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/pageFillin">Fill in</a>
-                <a href="/changeoption">Change fill in</a>
-                <a href="/changeotherId">Change fill in other id</a>
-                <a href="/fillinotherId">Fill in other id</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Own data
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/ownData">Tasks and absent</a>
-                <a href="/ownDataAbsent">List absent</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Information
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/schema">Completed table</a>
-                <a href="/lcm">LCM</a>
-                <a href="/vcm">VCM</a>
-                <a href="/mcfg">MCFG</a>
-                <a href="/allAbsent">Absent: all members</a>
-                <a href="/alltasksallmember">Tasks: all members</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">List all members
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/allStaffMember">List all members</a>
-                <a href="/alltask">list: all tasks</a>
-                <a href="/allfunction">list: all functions</a>
-                <a href="/alllocation">list: all locations</a>
-                <a href="/alldateName">list: all date</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">CheckList
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/check">Checklist</a>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Sign out
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="/signOut">Sign out</a>
-            </div>
+<div class="navbar">
+    <div class="dropdown">
+        <img src="images/cm2.png" alt="CM" width="70" height="70">
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Fill in
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/pageFillin">Fill in</a>
+            <a href="/changeoption">Change fill in</a>
+            <a href="/changeotherId">Change fill in other id</a>
+            <a href="/fillinotherId">Fill in other id</a>
         </div>
     </div>
+    <div class="dropdown">
+        <button class="dropbtn">Own data
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/ownData">Tasks and absent</a>
+            <a href="/ownDataAbsent">List absent</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Information
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/schema">Completed table</a>
+            <a href="/lcm">LCM</a>
+            <a href="/vcm">VCM</a>
+            <a href="/mcfg">MCFG</a>
+            <a href="/allAbsent">Absent: all members</a>
+            <a href="/alltasksallmember">Tasks: all members</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">List all members
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/allStaffMember">List all members</a>
+            <a href="/alltask">list: all tasks</a>
+            <a href="/allfunction">list: all functions</a>
+            <a href="/alllocation">list: all locations</a>
+            <a href="/alldateName">list: all date</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">CheckList
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/check">Checklist</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Sign out
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="/signOut">Sign out</a>
+        </div>
+    </div>
+</div>
 <br>
-    <div  class= "tableTask">
-        <form th:action="@{searchTasksMember}">
-            <label for="week">Choose a week:</label>
-            <select name="week" id="week">
-                <option th:each="dateName: ${dateNames}">[[${dateName.nameDate}]]</option>
-            </select>
-            <label for="department">Department</label>
-            <select name="department" id="department">
-                <option>LCM</option>
-                <option>VCM</option>
-                <option>MCFG</option>
-            </select>
-            <input type="submit" class="registerbtn" value="search">
-        </form>
-    <br>
-    <br>
+<div  class= "tableTask">
+    <p th:each="fillin: ${taskWeek}" > [[${fillin.week}]]</p>
 
     <table style="width: 80%" >
         <tr>

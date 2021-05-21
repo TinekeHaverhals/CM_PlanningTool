@@ -1,11 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+        "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <link rel="STYLESHEET" href="css/css.css" type="text/css">
 
 <head>
-    <title>Delete a function</title>
+    <title>fill in for other ID </title>
 </head>
+
 <body>
 <div class="navbar">
     <div class="dropdown">
@@ -73,23 +74,19 @@
         </div>
     </div>
 </div>
-
-<div class="add">
-    <h1><u>Delete a function</u></h1>
-    <form th:action="@{deletefun}">
-        <div class="container">
-            <label for="department">Choose a departement:</label>
-            <select name="department" id="department">
-                <option value="LCM">LCM</option>
-                <option value="VCM">VCM</option>
-                <option value="MCFG">MCFG</option>
-            </select>
-            <br>
-            <br>
-            <label><b>Name of the function </b></label>
-            <input type="text" name="namefunction">
-            <input type="submit" class="registerbtn" value="Delete">
-        </div>
+<br>
+<div class="fillin">
+    <h2>LCM</h2>
+    <form action="/fillinotherIdPageLCM">
+        <button class="button button1">LCM</button>
+    </form>
+    <h2>VCM</h2>
+    <form action="/fillinotherIdPageVCM">
+        <button class="button button1">VCM</button>
+    </form>
+    <h2>MCFG</h2>
+    <form action="/fillinotherIdePageMCFG">
+        <button class="button button1">MCFG</button>
     </form>
 </div>
 </body>

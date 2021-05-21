@@ -149,12 +149,13 @@ public class StaffMemberDAO {
     public List<StaffMember> getAllStaffMemberLCM() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Name FROM StaffMembers WHERE Department= 'LCM' ORDER BY Name ASC");
+        ResultSet rs = statement.executeQuery("SELECT Id, Name FROM StaffMembers WHERE Department= 'LCM' ORDER BY Name ASC");
         List<StaffMember> staffMembers = new ArrayList<>();
         StaffMember staffMember = null;
         if (rs!= null){
             while (rs.next()){
                 staffMember = new StaffMember();
+                staffMember.setId(rs.getInt("Id"));
                 staffMember.setName(rs.getString("Name"));
                 staffMembers.add(staffMember);
             }
@@ -165,12 +166,13 @@ public class StaffMemberDAO {
     public List<StaffMember> getAllStaffMemberMCFG() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Name FROM StaffMembers WHERE Department= 'MCFG' ORDER BY Name ASC");
+        ResultSet rs = statement.executeQuery("SELECT Id,Name FROM StaffMembers WHERE Department= 'MCFG' ORDER BY Name ASC");
         List<StaffMember> staffMembers = new ArrayList<>();
         StaffMember staffMember = null;
         if (rs!= null){
             while (rs.next()){
                 staffMember = new StaffMember();
+                staffMember.setId(rs.getInt("Id"));
                 staffMember.setName(rs.getString("Name"));
                 staffMembers.add(staffMember);
             }
@@ -181,12 +183,13 @@ public class StaffMemberDAO {
     public List<StaffMember> getAllStaffMemberVCM() throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT Name FROM StaffMembers WHERE Department= 'VCM' ORDER BY Name ASC");
+        ResultSet rs = statement.executeQuery("SELECT Id, Name FROM StaffMembers WHERE Department= 'VCM' ORDER BY Name ASC");
         List<StaffMember> staffMembers = new ArrayList<>();
         StaffMember staffMember = null;
         if (rs!= null){
             while (rs.next()){
                 staffMember = new StaffMember();
+                staffMember.setId(rs.getInt("Id"));
                 staffMember.setName(rs.getString("Name"));
                 staffMembers.add(staffMember);
             }
