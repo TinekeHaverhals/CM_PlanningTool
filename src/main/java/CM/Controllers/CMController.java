@@ -976,8 +976,9 @@ public class CMController {
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("ownDataWeek", fillinServices.getTableFillinWeek(fillin.getWeek()));
         model.addAttribute("searchOwn", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
-        return "ownData";
+        return "ownDataKopie";
     }
 
     @GetMapping("ownData2")
@@ -995,8 +996,9 @@ public class CMController {
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
+        model.addAttribute("ownDataWeek2", fillinServices.getTableFillinWeek(fillin.getWeek()));
         model.addAttribute("searchOwn2", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
-        return "ownData2";
+        return "ownDataKopie2";
     }
 
     // OWN DATA ABSENT
