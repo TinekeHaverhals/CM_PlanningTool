@@ -4,6 +4,7 @@ import CM.Data.DateNameDAO;
 import CM.Data.DepartmentDAO;
 import CM.Model.DateName;
 import CM.Model.Department;
+import CM.Model.Fillin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,4 +31,9 @@ public class DateNameServices {
     public Object getDeleteDate(String nameDate) throws SQLException{
         return  dateNameDAO.getDeleteDate(nameDate);
     }
+
+    public DateName getDateNames(String week) throws SQLException {
+        return dateNameDAO.getDateNames(week);
+    }
+
 }

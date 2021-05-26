@@ -16,11 +16,25 @@ public class Fillin {
     private int id;
     private int IdStaffMember;
     private String name;
+    private String abbreviationName;
     private String week;
     private String month;
+    private String location;
     private String department;
     private String namefunction;
     private String nameMember;
+    private String abbreviationLocation;
+
+    private String abbreviationNameMonAm;
+    private String abbreviationNameMonPm;
+    private String abbreviationNameTueAm;
+    private String abbreviationNameTuePm;
+    private String abbreviationNameWedAm;
+    private String abbreviationNameWedPm;
+    private String abbreviationNameThuAm;
+    private String abbreviationNameThuPm;
+    private String abbreviationNameFriAm;
+    private String abbreviationNameFriPm;
 
     private String nameDate;
     private String monthBegin;
@@ -107,6 +121,24 @@ public class Fillin {
         this.thuPmAbsent = thuAmAbsent;
         this.friAmAbsent = friAmAbsent;
         this.friPmAbsent = friAmAbsent;
+    }
+
+    public String getAbbreviationName() {
+        return abbreviationName;
+    }
+
+    public Fillin setAbbreviationName(String abbreviationName) {
+        this.abbreviationName = abbreviationName;
+        return this;
+    }
+
+    public String getAbbreviationLocation() {
+        return abbreviationLocation;
+    }
+
+    public Fillin setAbbreviationLocation(String abbreviationLocation) {
+        this.abbreviationLocation = abbreviationLocation;
+        return this;
     }
 
     public int getId() {
@@ -567,4 +599,105 @@ public class Fillin {
         this.nameMember = nameMember;
         return this;
     }
+
+    public String getLocation() {
+
+        return location;
+    }
+
+    public Fillin setLocation(String location) {
+        this.location = location;
+        return this;
+    }
+
+    public String getAbbreviationNameMonAm() {
+        return abbreviationNameMonAm;
+    }
+
+    public Fillin setAbbreviationNameMonAm(String abbreviationNameMonAm) {
+        this.abbreviationNameMonAm = abbreviationNameMonAm;
+        return this;
+    }
+
+    public String getAbbreviationNameMonPm() {
+        return abbreviationNameMonPm;
+    }
+
+    public Fillin setAbbreviationNameMonPm(String abbreviationNameMonPm) {
+        this.abbreviationNameMonPm = abbreviationNameMonPm;
+        return this;
+    }
+
+    public String getAbbreviationNameTueAm() {
+        return abbreviationNameTueAm;
+    }
+
+    public Fillin setAbbreviationNameTueAm(String abbreviationNameTueAm) {
+        this.abbreviationNameTueAm = abbreviationNameTueAm;
+        return this;
+    }
+
+    public String getAbbreviationNameTuePm() {
+        return abbreviationNameTuePm;
+    }
+
+    public Fillin setAbbreviationNameTuePm(String abbreviationNameTuePm) {
+        this.abbreviationNameTuePm = abbreviationNameTuePm;
+        return this;
+    }
+
+    public String getAbbreviationNameWedAm() {
+        return abbreviationNameWedAm;
+    }
+
+    public Fillin setAbbreviationNameWedAm(String abbreviationNameWedAm) {
+        this.abbreviationNameWedAm = abbreviationNameWedAm;
+        return this;
+    }
+
+    public String getAbbreviationNameWedPm() {
+        return abbreviationNameWedPm;
+    }
+
+    public Fillin setAbbreviationNameWedPm(String abbreviationNameWedPm) {
+        this.abbreviationNameWedPm = abbreviationNameWedPm;
+        return this;
+    }
+
+    public String getAbbreviationNameThuAm() {
+        return abbreviationNameThuAm;
+    }
+
+    public Fillin setAbbreviationNameThuAm(String abbreviationNameThuAm) {
+        this.abbreviationNameThuAm = abbreviationNameThuAm;
+        return this;
+    }
+
+    public String getAbbreviationNameThuPm() {
+        return abbreviationNameThuPm;
+    }
+
+    public Fillin setAbbreviationNameThuPm(String abbreviationNameThuPm) {
+        this.abbreviationNameThuPm = abbreviationNameThuPm;
+        return this;
+    }
+
+    public String getAbbreviationNameFriAm() {
+        return abbreviationNameFriAm;
+    }
+
+    public Fillin setAbbreviationNameFriAm(String abbreviationNameFriAm) {
+        this.abbreviationNameFriAm = abbreviationNameFriAm;
+        return this;
+    }
+
+    public String getAbbreviationNameFriPm() {
+        return abbreviationNameFriPm;
+    }
+
+    public Fillin setAbbreviationNameFriPm(String abbreviationNameFriPm) {
+        this.abbreviationNameFriPm = abbreviationNameFriPm;
+        return this;
+    }
+
 }

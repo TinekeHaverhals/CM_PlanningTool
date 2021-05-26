@@ -19,7 +19,7 @@
         </button>
         <div class="dropdown-content">
             <a href="/pageFillin">Fill in</a>
-            <a href="/changeoption">Change fill in</a>
+            <a href="/changefillin">Change fill in</a>
             <a href="/changeotherId">Change fill in other id</a>
             <a href="/fillinotherId">Fill in other id</a>
         </div>
@@ -159,6 +159,11 @@
             <td th:each="fillin: ${searchOwn}">[[${fillin.friPmAbsent}]]</td>
         </tr>
     </table>
+    <div>
+        <form action="/ownData">
+            <button class="button button1">Choose another week</button>
+        </form>
+    </div>
 
 
 </div>

@@ -717,7 +717,7 @@ public class FillinDAO {
 
     public List<Fillin> getTableFillinLCMWeek(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT DISTINCT Week FROM Fillin WHERE Week = ? ;");
+        PreparedStatement statement = connection.prepareStatement("SELECT Date FROM Date WHERE Date = ?;");
         statement.setString(1, week);
         ResultSet rs = statement.executeQuery();
         List<Fillin> fillins = new ArrayList<>();
@@ -727,7 +727,7 @@ public class FillinDAO {
             while (rs.next()) {
                 fillin = new Fillin();
                 staffMember = new StaffMember();
-                fillin.setWeek(rs.getString("week"));
+                fillin.setWeek(rs.getString("date"));
                 fillins.add(fillin);
             }
         }
@@ -1282,336 +1282,10 @@ public class FillinDAO {
         return fillins;
     }
 
-    public List<Fillin> getTableFillinVCMTaskMonAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember,  Fillin.MonAmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND MonAmFunction = 'Tasks' AND MonAmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setMonAmTask(rs.getString("monAmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskMonPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember,  Fillin.MonPmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND MonPmFunction = 'Tasks' AND MonPmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setMonPmTask(rs.getString("monPmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskTueAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.TueAmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND TueAmFunction = 'Tasks' AND TueAmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setTueAmTask(rs.getString("tueAmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskTuePm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.TuePmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND TuePmFunction = 'Tasks' AND TuePmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setTuePmTask(rs.getString("tuePmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskWedAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember,  Fillin.WedAmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND WedAmFunction = 'Tasks' AND WedAmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setWedAmTask(rs.getString("wedAmTask"));
-
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskWedPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember,  Fillin.WedPmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND WedPmFunction = 'Tasks' AND WedPmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setWedPmTask(rs.getString("wedPmTask"));
-
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskThuAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.ThuAmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ThuAmFunction = 'Tasks' AND ThuAmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setThuAmTask(rs.getString("thuAmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskThuPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember,  Fillin.ThuPmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ThuPmFunction = 'Tasks' AND ThuPmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setThuPmTask(rs.getString("thuPmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskFriAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.FriAmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND FriAmFunction = 'Tasks' AND FriAmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setFriAmTask(rs.getString("friAmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTaskFriPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.FriPmTask FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND FriPmFunction = 'Tasks' AND FriPmAbsent IS Null");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setFriPmTask(rs.getString("friPmTask"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentMon(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.Department,Fillin.MonAmAbsent, Fillin.MonPmAbsent FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ( Fillin.MonAmAbsent = 'Absent' OR Fillin.MonPmAbsent = 'Absent')");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setDepartment(rs.getString("department"));
-                fillin.setMonAmAbsent(rs.getString("monAmAbsent"));
-                fillin.setMonPmAbsent(rs.getString("monPmAbsent"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentTue(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.Department,Fillin.TueAmAbsent, Fillin.TuePmAbsent FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ( Fillin.TueAmAbsent = 'Absent' OR Fillin.TuePmAbsent = 'Absent')");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setDepartment(rs.getString("department"));
-                fillin.setTueAmAbsent(rs.getString("tueAmAbsent"));
-                fillin.setTuePmAbsent(rs.getString("tuePmAbsent"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentWed(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.Department,Fillin.WedAmAbsent, Fillin.WedPmAbsent FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ( Fillin.WedAmAbsent = 'Absent' OR Fillin.WedPmAbsent = 'Absent')");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setDepartment(rs.getString("department"));
-                fillin.setWedAmAbsent(rs.getString("wedAmAbsent"));
-                fillin.setWedPmAbsent(rs.getString("wedPmAbsent"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentThu(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.Department,Fillin.ThuAmAbsent, Fillin.ThuPmAbsent FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ( Fillin.ThuAmAbsent = 'Absent' OR Fillin.ThuPmAbsent = 'Absent')");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setDepartment(rs.getString("department"));
-                fillin.setThuAmAbsent(rs.getString("thuAmAbsent"));
-                fillin.setThuPmAbsent(rs.getString("thuPmAbsent"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentFri(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.Department,Fillin.FriAmAbsent, Fillin.FriPmAbsent FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ( Fillin.FriAmAbsent = 'Absent' OR Fillin.FriPmAbsent = 'Absent')");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setDepartment(rs.getString("department"));
-                fillin.setFriAmAbsent(rs.getString("friAmAbsent"));
-                fillin.setFriPmAbsent(rs.getString("friPmAbsent"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
 
     public List<Fillin> getTableFillinVCMWeek(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT DISTINCT Week FROM Fillin WHERE Week = ? ;");
+        PreparedStatement statement = connection.prepareStatement("SELECT Date FROM Date WHERE Date = ?;");
         statement.setString(1, week);
         ResultSet rs = statement.executeQuery();
         List<Fillin> fillins = new ArrayList<>();
@@ -1621,228 +1295,7 @@ public class FillinDAO {
             while (rs.next()) {
                 fillin = new Fillin();
                 staffMember = new StaffMember();
-                fillin.setWeek(rs.getString("week"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-
-    public List<Fillin> getTableFillinVCMMonAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.MonAmFunction, Fillin.MonAmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND MonAmAbsent IS Null AND NOT MonAmFunction = 'Tasks' ORDER BY MonAmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setMonAmFunction(rs.getString("monAmFunction"));
-                fillin.setMonAmLocation(rs.getString("monAmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMMonPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.MonPmFunction,  Fillin.MonPmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND MonPmAbsent IS Null AND NOT MonPmFunction = 'Tasks'  ORDER BY MonPmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setMonPmFunction(rs.getString("monPmFunction"));
-                fillin.setMonPmLocation(rs.getString("monPmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTueAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name, Fillin.IdStaffMember,Fillin.TueAmFunction, Fillin.TueAmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND TueAmAbsent IS Null AND NOT TueAmFunction = 'Tasks' ORDER BY TueAmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setTueAmFunction(rs.getString("tueAmFunction"));
-                fillin.setTueAmLocation(rs.getString("tueAmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMTuePm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.TuePmFunction,  Fillin.TuePmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND TuePmAbsent IS Null AND NOT TuePmFunction = 'Tasks'  ORDER BY TuePmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setTuePmFunction(rs.getString("tuePmFunction"));
-                fillin.setTuePmLocation(rs.getString("tuePmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMWedAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name, Fillin.IdStaffMember,Fillin.WedAmFunction, Fillin.WedAmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND WedAmAbsent IS Null AND NOT WedAmFunction = 'Tasks'  ORDER BY WedAmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setWedAmFunction(rs.getString("wedAmFunction"));
-                fillin.setWedAmLocation(rs.getString("wedAmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMWedPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.WedPmFunction,  Fillin.WedPmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND WedPmAbsent IS Null AND NOT WedPmFunction = 'Tasks'  ORDER BY WedPmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setWedPmFunction(rs.getString("wedPmFunction"));
-                fillin.setWedPmLocation(rs.getString("wedPmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMThuAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.ThuAmFunction, Fillin.ThuAmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ThuAmAbsent IS Null AND NOT ThuAmFunction = 'Tasks'  ORDER BY ThuAmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setThuAmFunction(rs.getString("thuAmFunction"));
-                fillin.setThuAmLocation(rs.getString("thuAmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMThuPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name, Fillin.IdStaffMember, Fillin.ThuPmFunction,  Fillin.ThuPmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND ThuPmAbsent IS Null  AND NOT ThuPmFunction = 'Tasks' ORDER BY ThuPmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setThuPmFunction(rs.getString("thuPmFunction"));
-                fillin.setThuPmLocation(rs.getString("thuPmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMFriAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name, Fillin.IdStaffMember,Fillin.FriAmFunction, Fillin.FriAmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND FriAmAbsent IS Null AND NOT FriAmFunction = 'Tasks'  ORDER BY FriAmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setFriAmFunction(rs.getString("friAmFunction"));
-                fillin.setFriAmLocation(rs.getString("friAmLocation"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMFriPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name, Fillin.IdStaffMember,Fillin.FriPmFunction,  Fillin.FriPmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='VCM' AND FriPmAbsent AND NOT FriPmFunction = 'Tasks' IS Null ORDER BY FriPmFunction ASC;");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setName(rs.getString("name"));
-                fillin.setIdStaffMember(rs.getInt("IdStaffMember"));
-                fillin.setFriPmFunction(rs.getString("friPmFunction"));
-                fillin.setFriPmLocation(rs.getString("friPmLocation"));
+                fillin.setWeek(rs.getString("date"));
                 fillins.add(fillin);
             }
         }
@@ -2179,7 +1632,7 @@ public class FillinDAO {
 
     public List<Fillin> getTableFillinMCFGWeek(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT DISTINCT Week FROM Fillin WHERE Week = ? ; ");
+        PreparedStatement statement = connection.prepareStatement("SELECT Date FROM Date WHERE Date = ?;");
         statement.setString(1, week);
         ResultSet rs = statement.executeQuery();
         List<Fillin> fillins = new ArrayList<>();
@@ -2189,7 +1642,7 @@ public class FillinDAO {
             while (rs.next()) {
                 fillin = new Fillin();
                 staffMember = new StaffMember();
-                fillin.setWeek(rs.getString("week"));
+                fillin.setWeek(rs.getString("date"));
                 fillins.add(fillin);
             }
         }
@@ -3272,6 +2725,7 @@ public class FillinDAO {
         return fillins;
     }
 
+
     public List<Fillin> getTableFillinLCMMonAmTask(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name,Fillin.IdStaffMember, Fillin.MonAmFunction, Fillin.MonAmLocation FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id WHERE Week = ? AND Fillin.Department='LCM' AND MonAmAbsent IS Null ORDER BY MonAmFunction ASC;");
@@ -3435,10 +2889,10 @@ public class FillinDAO {
         return fillin;
     }
 
-    public Fillin getFillinFillinIDVCM(int IdStaffMember, String week, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent, String tueAmFunction, String tueAmTask, String tueAmLocation, String tueAmAbsent, String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation, String wedAmAbsent, String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation, String thuAmAbsent, String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
+    public Fillin getFillinFillinIDVCM(String nameMember, String week, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent, String tueAmFunction, String tueAmTask, String tueAmLocation, String tueAmAbsent, String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation, String wedAmAbsent, String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation, String thuAmAbsent, String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO Fillin (Id,IdStaffMember,Week, Department, MonAmFunction,MonAmTask, MonAmLocation, MonAmAbsent, MonPmFunction, MonPmTask, MonPmLocation, MonPmAbsent, TueAmFunction,TueAmTask, TueAmLocation, TueAmAbsent, TuePmFunction, TuePmTask, TuePmLocation, TuePmAbsent , WedAmFunction, WedAmTask, WedAmLocation, WedAmAbsent, WedPmFunction, WedPmTask, WedPmLocation, WedPmAbsent, ThuAmFunction,ThuAmTask, ThuAmLocation, ThuAmAbsent, ThuPmFunction, ThuPmTask, ThuPmLocation, ThuPmAbsent, FriAmFunction,FriAmTask, FriAmLocation, FriAmAbsent, FriPmFunction, FriPmTask, FriPmLocation, FriPmAbsent)VALUES (Null ,?,?, 'VCM',?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);");
-        statement.setInt(1, IdStaffMember);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Fillin (Id,IdStaffMember,Week, Department, MonAmFunction,MonAmTask, MonAmLocation, MonAmAbsent, MonPmFunction, MonPmTask, MonPmLocation, MonPmAbsent, TueAmFunction,TueAmTask, TueAmLocation, TueAmAbsent, TuePmFunction, TuePmTask, TuePmLocation, TuePmAbsent , WedAmFunction, WedAmTask, WedAmLocation, WedAmAbsent, WedPmFunction, WedPmTask, WedPmLocation, WedPmAbsent, ThuAmFunction,ThuAmTask, ThuAmLocation, ThuAmAbsent, ThuPmFunction, ThuPmTask, ThuPmLocation, ThuPmAbsent, FriAmFunction,FriAmTask, FriAmLocation, FriAmAbsent, FriPmFunction, FriPmTask, FriPmLocation, FriPmAbsent)VALUES (Null ,(SELECT Id FROM StaffMembers WHERE Name = ?),?, 'VCM',?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);");
+        statement.setString(1, nameMember);
         statement.setString(2, week);
         statement.setString(3, monAmFunction);
         statement.setString(4, monAmTask);
@@ -3485,10 +2939,10 @@ public class FillinDAO {
         return fillin;
     }
 
-    public Fillin getFillinFillinIDLCM(int IdStaffMember, String week, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent, String tueAmFunction, String tueAmTask, String tueAmLocation, String tueAmAbsent, String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation, String wedAmAbsent, String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation, String thuAmAbsent, String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
+    public Fillin getFillinFillinIDLCM(String nameMember, String week, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent, String tueAmFunction, String tueAmTask, String tueAmLocation, String tueAmAbsent, String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation, String wedAmAbsent, String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation, String thuAmAbsent, String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO Fillin (Id,IdStaffMember,Week, Department, MonAmFunction,MonAmTask, MonAmLocation, MonAmAbsent, MonPmFunction, MonPmTask, MonPmLocation, MonPmAbsent, TueAmFunction,TueAmTask, TueAmLocation, TueAmAbsent, TuePmFunction, TuePmTask, TuePmLocation, TuePmAbsent , WedAmFunction, WedAmTask, WedAmLocation, WedAmAbsent, WedPmFunction, WedPmTask, WedPmLocation, WedPmAbsent, ThuAmFunction,ThuAmTask, ThuAmLocation, ThuAmAbsent, ThuPmFunction, ThuPmTask, ThuPmLocation, ThuPmAbsent, FriAmFunction,FriAmTask, FriAmLocation, FriAmAbsent, FriPmFunction, FriPmTask, FriPmLocation, FriPmAbsent)VALUES (Null ,?,?, 'VCM',?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);");
-        statement.setInt(1, IdStaffMember);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Fillin (Id,IdStaffMember,Week, Department, MonAmFunction,MonAmTask, MonAmLocation, MonAmAbsent, MonPmFunction, MonPmTask, MonPmLocation, MonPmAbsent, TueAmFunction,TueAmTask, TueAmLocation, TueAmAbsent, TuePmFunction, TuePmTask, TuePmLocation, TuePmAbsent , WedAmFunction, WedAmTask, WedAmLocation, WedAmAbsent, WedPmFunction, WedPmTask, WedPmLocation, WedPmAbsent, ThuAmFunction,ThuAmTask, ThuAmLocation, ThuAmAbsent, ThuPmFunction, ThuPmTask, ThuPmLocation, ThuPmAbsent, FriAmFunction,FriAmTask, FriAmLocation, FriAmAbsent, FriPmFunction, FriPmTask, FriPmLocation, FriPmAbsent) VALUES (Null ,(SELECT Id FROM StaffMembers WHERE Name = ?),?, 'LCM',?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)");
+        statement.setString(1, nameMember);
         statement.setString(2, week);
         statement.setString(3, monAmFunction);
         statement.setString(4, monAmTask);
@@ -3535,10 +2989,10 @@ public class FillinDAO {
         return fillin;
     }
 
-    public Fillin getFillinFillinIDMCFG(int IdStaffMember, String week, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent, String tueAmFunction, String tueAmTask, String tueAmLocation, String tueAmAbsent, String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation, String wedAmAbsent, String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation, String thuAmAbsent, String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
+    public Fillin getFillinFillinIDMCFG(String nameMember, String week, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent, String tueAmFunction, String tueAmTask, String tueAmLocation, String tueAmAbsent, String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation, String wedAmAbsent, String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation, String thuAmAbsent, String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO Fillin (Id,IdStaffMember,Week, Department, MonAmFunction,MonAmTask, MonAmLocation, MonAmAbsent, MonPmFunction, MonPmTask, MonPmLocation, MonPmAbsent, TueAmFunction,TueAmTask, TueAmLocation, TueAmAbsent, TuePmFunction, TuePmTask, TuePmLocation, TuePmAbsent , WedAmFunction, WedAmTask, WedAmLocation, WedAmAbsent, WedPmFunction, WedPmTask, WedPmLocation, WedPmAbsent, ThuAmFunction,ThuAmTask, ThuAmLocation, ThuAmAbsent, ThuPmFunction, ThuPmTask, ThuPmLocation, ThuPmAbsent, FriAmFunction,FriAmTask, FriAmLocation, FriAmAbsent, FriPmFunction, FriPmTask, FriPmLocation, FriPmAbsent)VALUES (Null ,?,?, 'MCFG',?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);");
-        statement.setInt(1, IdStaffMember);
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Fillin (Id,IdStaffMember,Week, Department, MonAmFunction,MonAmTask, MonAmLocation, MonAmAbsent, MonPmFunction, MonPmTask, MonPmLocation, MonPmAbsent, TueAmFunction,TueAmTask, TueAmLocation, TueAmAbsent, TuePmFunction, TuePmTask, TuePmLocation, TuePmAbsent , WedAmFunction, WedAmTask, WedAmLocation, WedAmAbsent, WedPmFunction, WedPmTask, WedPmLocation, WedPmAbsent, ThuAmFunction,ThuAmTask, ThuAmLocation, ThuAmAbsent, ThuPmFunction, ThuPmTask, ThuPmLocation, ThuPmAbsent, FriAmFunction,FriAmTask, FriAmLocation, FriAmAbsent, FriPmFunction, FriPmTask, FriPmLocation, FriPmAbsent)VALUES (Null ,(SELECT Id FROM StaffMembers WHERE Name = ?),?, 'MCFG',?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);");
+        statement.setString(1, nameMember);
         statement.setString(2, week);
         statement.setString(3, monAmFunction);
         statement.setString(4, monAmTask);
@@ -3583,5 +3037,665 @@ public class FillinDAO {
         int rs = statement.executeUpdate();
         Fillin fillin = null;
         return fillin;
+    }
+
+    public List<Fillin> getAllfunctionVCMMonAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT MonAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.MonAmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMMonPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT MonPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.MonPmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMTueAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT TueAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.TueAmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMTuePm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT TuePmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.TuePmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMWedAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT WedAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.WedAmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMWedPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT WedPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.WedPmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMThuAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT ThuAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.ThuAmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMThuPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT ThuPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.ThuPmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMFriAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT FriAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.FriAmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionVCMFriPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT FriPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.FriPmFunction AND Week = ? AND Department='VCM') " +
+                "AND Department='VCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMMonAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT MonAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.MonAmFunction AND Week = ? AND Department='LCM') " +
+                "AND Department='LCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMMonPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT MonPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.MonPmFunction AND Week = ? AND Department='LCM') " +
+                "AND Department='LCM' " +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMTueAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT TueAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.TueAmFunction AND Week = ? AND Department='LCM') " +
+                "AND Department='LCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMTuePm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT TuePmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.TuePmFunction AND Week = ? AND Department='LCM')" +
+                "AND Department='LCM' " +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMWedAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT WedAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.WedAmFunction AND Week = ? AND Department='LCM')" +
+                "AND Department='LCM' " +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMWedPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT WedPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.WedPmFunction AND Week = ? AND Department='LCM') " +
+                "AND Department='LCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMThuAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT ThuAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.ThuAmFunction AND Week = ? AND Department='LCM') " +
+                "AND Department='LCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMThuPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT ThuPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.ThuPmFunction AND Week = ? AND Department='LCM')" +
+                "AND Department='LCM' " +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMFriAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT FriAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.FriAmFunction AND Week = ? AND Department='LCM') " +
+                "AND Department='LCM'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionLCMFriPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT FriPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.FriPmFunction AND Week = ? AND Department='LCM')" +
+                "AND Department='LCM' " +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGMonAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT MonAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.MonAmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGMonPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT MonPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.MonPmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGTueAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT TueAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.TueAmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGTuePm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT TuePmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.TuePmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGWedAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT WedAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.WedAmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGWedPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT WedPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.WedPmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGThuAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT ThuAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.ThuAmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGThuPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT ThuPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.ThuPmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGFriAm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT FriAmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.FriAmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+    public List<Fillin> getAllfunctionMCFGFriPm(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Department, Namefunction FROM Functions WHERE NOT EXISTS " +
+                "(SELECT FriPmFunction FROM Fillin " +
+                "WHERE Functions.Namefunction = Fillin.FriPmFunction AND Week = ? AND Department='MCFG') " +
+                "AND Department='MCFG'" +
+                "ORDER BY Namefunction ASC");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs!= null){
+            while (rs.next()){
+                fillin = new Fillin();
+                fillin.setNamefunction(rs.getString("namefunction"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
     }
 }

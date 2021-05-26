@@ -1,7 +1,9 @@
 package CM.Services;
 
+import CM.Data.Fillin2DAO;
 import CM.Data.FillinDAO;
 import CM.Model.Fillin;
+import CM.Model.Function;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +19,21 @@ public class FillinServices {
     @Autowired
     private FillinDAO fillinDAO;
 
+
     public Fillin getAddFillin(int IdStaffMember, String week, String department, String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
         return fillinDAO.getAddFillin( IdStaffMember, week, department, monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent , tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
     }
 
-    public Fillin getFillinFillinIDLCM( int IdStaffMember, String week,  String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
-        return fillinDAO.getFillinFillinIDLCM( IdStaffMember, week,monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent , tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
+    public Fillin getFillinFillinIDLCM( String nameMember, String week,  String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
+        return fillinDAO.getFillinFillinIDLCM( nameMember, week ,monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent , tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
     }
 
-    public Fillin getFillinFillinIDVCM( int IdStaffMember, String week,  String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
-        return fillinDAO.getFillinFillinIDVCM( IdStaffMember, week,monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent , tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
+    public Fillin getFillinFillinIDVCM( String nameMember, String week,  String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
+        return fillinDAO.getFillinFillinIDVCM( nameMember, week, monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent , tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
     }
 
-    public Fillin getFillinFillinIDMCFG( int IdStaffMember, String week,  String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
-        return fillinDAO.getFillinFillinIDMCFG( IdStaffMember, week,monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent , tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
+    public Fillin getFillinFillinIDMCFG( String nameMember, String week,  String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
+        return fillinDAO.getFillinFillinIDMCFG( nameMember, week,monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent , tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
     }
 
     public Fillin getChangeFillin(int IdStaffMember, String week,  String monAmFunction, String monAmTask, String monAmLocation,String monAmAbsent,String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent , String tueAmFunction, String tueAmTask, String tueAmLocation,String tueAmAbsent,String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent, String wedAmFunction, String wedAmTask, String wedAmLocation,String wedAmAbsent,String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent, String thuAmFunction, String thuAmTask, String thuAmLocation,String thuAmAbsent,String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent, String friAmFunction, String friAmTask, String friAmLocation,String friAmAbsent,String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent ) throws Exception {
@@ -93,42 +96,6 @@ public class FillinServices {
         return fillinDAO.getTableFillinWeek(week);
     }
 
-    public List<Fillin> getTableFillinVCMMonAm(String week) throws SQLException {
-        return fillinDAO.getTableFillinVCMMonAm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMMonPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMMonPm(week);
-    }
-    public List<Fillin> getTableFillinVCMTueAm(String week) throws SQLException {
-        return fillinDAO.getTableFillinVCMTueAm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMTuePm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTuePm(week);
-    }
-    public List<Fillin> getTableFillinVCMWedAm(String week) throws SQLException {
-        return fillinDAO.getTableFillinVCMWedAm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMWedPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMWedPm(week);
-    }
-    public List<Fillin> getTableFillinVCMThuAm(String week) throws SQLException {
-        return fillinDAO.getTableFillinVCMThuAm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMThuPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMThuPm(week);
-    }
-    public List<Fillin> getTableFillinVCMFriAm(String week) throws SQLException {
-        return fillinDAO.getTableFillinVCMFriAm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMFriPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMFriPm(week);
-    }
-
     public List<Fillin> getTableFillinMCFGMonAm(String week) throws SQLException {
         return fillinDAO.getTableFillinMCFGMonAm(week);
     }
@@ -184,24 +151,6 @@ public class FillinServices {
         return fillinDAO. getTableFillinLCMAbsentFri(week);
     }
 
-    public List<Fillin>  getTableFillinVCMAbsentMon(String week)throws SQLException {
-        return fillinDAO. getTableFillinVCMAbsentMon(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentTue(String week)throws SQLException {
-        return fillinDAO. getTableFillinVCMAbsentTue(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentWed(String week)throws SQLException {
-        return fillinDAO. getTableFillinVCMAbsentWed(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentThu(String week)throws SQLException {
-        return fillinDAO. getTableFillinVCMAbsentThu(week);
-    }
-    public List<Fillin>  getTableFillinVCMAbsentFri(String week)throws SQLException {
-        return fillinDAO. getTableFillinVCMAbsentFri(week);
-    }
 
     public List<Fillin>  getTableFillinMCFGAbsentMon(String week)throws SQLException {
         return fillinDAO. getTableFillinMCFGAbsentMon(week);
@@ -327,41 +276,6 @@ public class FillinServices {
     }
     public List<Fillin> getTableFillinLCMTaskFriPm(String week)throws SQLException {
         return fillinDAO.getTableFillinLCMTaskFriPm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMTaskMonAm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskMonAm(week);
-    }
-    public List<Fillin> getTableFillinVCMTaskMonPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskMonPm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMTaskTueAm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskTueAm(week);
-    }
-    public List<Fillin> getTableFillinVCMTaskTuePm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskTuePm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMTaskWedAm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskWedAm(week);
-    }
-    public List<Fillin> getTableFillinVCMTaskWedPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskWedPm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMTaskThuAm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskThuAm(week);
-    }
-    public List<Fillin> getTableFillinVCMTaskThuPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskThuPm(week);
-    }
-
-    public List<Fillin> getTableFillinVCMTaskFriAm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskFriAm(week);
-    }
-    public List<Fillin> getTableFillinVCMTaskFriPm(String week)throws SQLException {
-        return fillinDAO.getTableFillinVCMTaskFriPm(week);
     }
 
     public List<Fillin> getTableFillinMCFGTaskMonAm(String week)throws SQLException {
@@ -547,6 +461,7 @@ public class FillinServices {
         return fillinDAO.getDateName();
     }
 
+
     public List<Fillin> getDateNameId(int IdStaffMember) throws SQLException {
         return fillinDAO.getDateNameId(IdStaffMember);
     }
@@ -573,5 +488,124 @@ public class FillinServices {
 
     }
 
+    public List<Fillin> getAllfunctionVCMMonAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMMonAm(week);
+    }
+
+    public List<Fillin> getAllfunctionVCMMonPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMMonPm( week);
+    }
+
+    public List<Fillin> getAllfunctionVCMTueAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMTueAm( week);
+    }
+
+    public List<Fillin> getAllfunctionVCMTuePm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMTuePm(week);
+    }
+
+    public List<Fillin> getAllfunctionVCMWedAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMWedAm( week);
+    }
+
+    public List<Fillin> getAllfunctionVCMWedPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMWedPm(week);
+    }
+
+    public List<Fillin> getAllfunctionVCMThuAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMThuAm(week);
+    }
+
+    public List<Fillin> getAllfunctionVCMThuPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMThuPm(week);
+    }
+
+    public List<Fillin> getAllfunctionVCMFriAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMFriAm( week);
+    }
+
+    public List<Fillin> getAllfunctionVCMFriPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionVCMFriPm( week);
+    }
+
+    public List<Fillin> getAllfunctionLCMMonAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMMonAm(week);
+    }
+
+    public List<Fillin> getAllfunctionLCMMonPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMMonPm( week);
+    }
+
+    public List<Fillin> getAllfunctionLCMTueAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMTueAm( week);
+    }
+
+    public List<Fillin> getAllfunctionLCMTuePm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMTuePm(week);
+    }
+
+    public List<Fillin> getAllfunctionLCMWedAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMWedAm( week);
+    }
+
+    public List<Fillin> getAllfunctionLCMWedPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMWedPm(week);
+    }
+
+    public List<Fillin> getAllfunctionLCMThuAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMThuAm(week);
+    }
+
+    public List<Fillin> getAllfunctionLCMThuPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMThuPm(week);
+    }
+
+    public List<Fillin> getAllfunctionLCMFriAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMFriAm( week);
+    }
+
+    public List<Fillin> getAllfunctionLCMFriPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionLCMFriPm( week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGMonAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGMonAm(week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGMonPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGMonPm( week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGTueAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGTueAm( week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGTuePm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGTuePm(week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGWedAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGWedAm( week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGWedPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGWedPm(week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGThuAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGThuAm(week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGThuPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGThuPm(week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGFriAm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGFriAm( week);
+    }
+
+    public List<Fillin> getAllfunctionMCFGFriPm(String week) throws SQLException {
+        return fillinDAO.getAllfunctionMCFGFriPm( week);
+    }
 }
 

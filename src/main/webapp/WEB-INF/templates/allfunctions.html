@@ -18,7 +18,7 @@
             </button>
             <div class="dropdown-content">
                 <a href="/pageFillin">Fill in</a>
-                <a href="/changeoption">Change fill in</a>
+                <a href="/changefillin">Change fill in</a>
                 <a href="/changeotherId">Change fill in other id</a>
                 <a href="/fillinotherId">Fill in other id</a>
             </div>
@@ -80,20 +80,14 @@
             <tr>
                 <th>Department</th>
                 <th>Functions</th>
-                <th>Total employees present</th>
             </tr>
             <tr th:each="function: ${functions}">
                 <td>[[${function.department}]]</td>
                 <td>[[${function.namefunction}]]</td>
-                <td>[[${function.total}]]</td>
             </tr>
         </table>
 
         <div>
-            <h2>Change a function</h2>
-            <form action="/changefunction">
-                <button class="button button1">Change a function</button>
-            </form>
             <h2>Add a new function</h2>
             <form action="/addfunction">
                 <button class="button button1">Add a new function</button>

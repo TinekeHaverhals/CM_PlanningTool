@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:td="http://www.w3.org/1999/xhtml">
 <link rel="STYLESHEET" href="css/css.css" type="text/css">
 
 <head>
@@ -18,7 +18,7 @@
         </button>
         <div class="dropdown-content">
             <a href="/pageFillin">Fill in</a>
-            <a href="/changeoption2">Change fill in</a>
+            <a href="/changefillin">Change fill in</a>
         </div>
     </div>
     <div class="dropdown">
@@ -53,288 +53,403 @@
     </div>
 </div>
 <br>
-<div  class= "tableTask">
-    <p th:each="fillin: ${fillinVCMWeek2}" > [[${fillin.week}]]</p>
 
-
-    <table style="width: 80%" >
-        <tr>
-            <th class="schema2">Days:</th>
-            <th class="schema2">AM/PM:</th>
-            <th class="schema2">Name:</th>
-            <th class="schema2">Funtion:</th>
-            <th class="schema2">Location:</th>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Monday</th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMMonAm2}">
-            <th></th>
-            <th>AM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.monAmFunction}]]</td>
-            <td>[[${fillin.monAmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMMonPm2}">
-            <th></th>
-            <th>PM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.monPmFunction}]]</td>
-            <td>[[${fillin.monPmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Tuesday</th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMTueAm2}">
-            <th></th>
-            <th>AM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.tueAmFunction}]]</td>
-            <td>[[${fillin.tueAmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMTuePm2}">
-            <th></th>
-            <th>PM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.tuePmFunction}]]</td>
-            <td>[[${fillin.tuePmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Wednesday</th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMWedAm2}">
-            <th></th>
-            <th>AM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.wedAmFunction}]]</td>
-            <td>[[${fillin.wedAmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMWedPm2}">
-            <th></th>
-            <th>PM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.wedPmFunction}]]</td>
-            <td>[[${fillin.wedPmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Thursday</th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMThuAm2}">
-            <th></th>
-            <th>AM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.thuAmFunction}]]</td>
-            <td>[[${fillin.thuAmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMThuPm2}">
-            <th></th>
-            <th>PM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.thuPmFunction}]]</td>
-            <td>[[${fillin.thuPmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Friday</th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMFriAm2}">
-            <th></th>
-            <th>AM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.friAmFunction}]]</td>
-            <td>[[${fillin.friAmLocation}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${fillinVCMFriPm2}">
-            <th></th>
-            <th>PM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.friPmFunction}]]</td>
-            <td>[[${fillin.friPmLocation}]]</td>
-        </tr>
-
-        <tr>
-            <th colspan="5" class="schema2">Absent</th>
-        </tr>
-        <tr>
-            <th colspan="2" class="schema2"></th>
-            <th class="schema2">Name</th>
-            <th class="schema2">AM</th>
-            <th class="schema2">PM</th>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Monday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMAbsentMon2}">
-            <th colspan="2"></th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.monAmAbsent}]]</td>
-            <td>[[${fillin.monAmAbsent}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5"  class="schema">Tuesday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMAbsentTue2}">
-            <th colspan="2"></th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.tueAmAbsent}]]</td>
-            <td>[[${fillin.tuePmAbsent}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5"  class="schema">Wednesday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMAbsentWed2}">
-            <th colspan="2"></th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.wedAmAbsent}]]</td>
-            <td>[[${fillin.wedPmAbsent}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5"  class="schema">Thursday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMAbsentThu2}">
-            <th colspan="2"></th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.thuAmAbsent}]]</td>
-            <td>[[${fillin.thuPmAbsent}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5"  class="schema">Friday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMAbsentFri2}">
-            <th colspan="2"></th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.friAmAbsent}]]</td>
-            <td>[[${fillin.friPmAbsent}]]</td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema2">Tasks</th>
-        </tr>
-
-        <tr>
-            <th colspan="2" class="schema2"></th>
-            <th class="schema2">Name</th>
-            <th class="schema2">Task</th>
-            <th class="schema2"></th>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Monday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskMonAm2}">
-            <th></th>
-            <th>Am</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.monAmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskMonPm2}">
-            <th></th>
-            <th>Pm</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.monPmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Tuesday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskTueAm2}">
-            <th></th>
-            <th>Am</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.tueAmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskTuePm2}">
-            <th></th>
-            <th>Pm</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.tuePmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Wednesday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskWedAm2}">
-            <th></th>
-            <th>Am</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.wedAmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskWedPm2}">
-            <th></th>
-            <th>Pm</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.wedPmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Thursday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskThuAm2}">
-            <th></th>
-            <th>Am</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.thuAmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema3"></th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskThuPm2}">
-            <th></th>
-            <th>PM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.thuPmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema">Friday</th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskFriAm2}">
-            <th></th>
-            <th>AM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.friAmTask}]]</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th colspan="5" class="schema"></th>
-        </tr>
-        <tr th:each="fillin: ${tableFillinVCMTaskFriPm2}">
-            <th></th>
-            <th>PM</th>
-            <td>[[${fillin.name}]]</td>
-            <td>[[${fillin.friPmTask}]]</td>
-            <td></td>
-        </tr>
-    </table>
-
-
-</div>
+<p th:each="fillin: ${fillinVCMWeek}" >Week :  [[${fillin.week}]]</p>
+<table >
+    <tr>
+        <th colspan="3"></th>
+        <th class="schema2">Mon Am</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Mon PM</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Tue Am</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Tue PM</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Wed Am</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Wed PM</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Thu Am</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Thu PM</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Fri Am</th>
+        <th class="schema2">Loc:</th>
+        <th class="schema2">Fri PM</th>
+        <th class="schema2">Loc:</th>
+    </tr>
+    <tr>
+        <th>SD 1L VCM</th>
+        <th>8u</th>
+        <th>mail</th>
+        <td th:each="fillin: ${fillinVCMMonAmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmMail}">[[${fillin.abbreviationName}]] </td>
+        <td th:each="fillin: ${fillinVCMMonPmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmMail}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmMail}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Tel 1st</th>
+        <td th:each="fillin: ${fillinVCMMonAmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTel}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTel}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTel}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Tel 1st</th>
+        <td th:each="fillin: ${fillinVCMMonAmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTelPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTelPer2}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Tel 1st</th>
+        <td th:each="fillin: ${fillinVCMMonAmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTelPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTelPer3}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Tel 2nd</th>
+        <td th:each="fillin: ${fillinVCMMonAmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTel2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTel2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTel2}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Tel 2nd</th>
+        <td th:each="fillin: ${fillinVCMMonAmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTel2Per2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmTel2Per2}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th colspan="23" class="schema"></th>
+    </tr>
+    <tr>
+        <th>SD 2L INC VCM</th>
+        <th></th>
+        <th>zabbix</th>
+        <td th:each="fillin: ${fillinVCMMonAmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmZabbix}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmZabbix}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer1}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer1}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer2}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer3}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer3}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer4}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmINCPer4}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th>SD 2L SR VCM</th>
+        <th></th>
+        <th></th>
+        <td th:each="fillin: ${fillinVCMMonAmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmSR}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmSR}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmSR}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <td th:each="fillin: ${fillinVCMMonAmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonAmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMMonPmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTueAmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMTuePmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedAmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMWedPmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuAmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMThuPmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriAmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmSRPer2}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${fillinVCMFriPmSRPer2}">[[${fillin.abbreviationLocation}]]</td>
+    </tr>
+    <tr>
+        <th colspan="23" class="schema">Tasks</th>
+    </tr>
+    <tr>
+        <th colspan="3"></th>
+        <td th:each="fillin: ${tableFillinVCMTaskMonAm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskMonAm}">[[${fillin.monAmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskMonPm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskMonPm}">[[${fillin.monPmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskTueAm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskTueAm}">[[${fillin.tueAmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskTuePm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskTuePm}">[[${fillin.tuePmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskWedAm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskWedAm}">[[${fillin.wedAmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskWedPm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskWedPm}">[[${fillin.wedPmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskThuAm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskThuAm}">[[${fillin.thuAmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskThuPm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskThuPm}">[[${fillin.thuPmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskFriAm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskFriAm}">[[${fillin.friAmTask}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskFriPm}">[[${fillin.abbreviationName}]]</td>
+        <td th:each="fillin: ${tableFillinVCMTaskFriPm}">[[${fillin.friPmTask}]]</td>
+    </tr>
+    <tr>
+        <th colspan="23" class="schema">Absent</th>
+    </tr>
+    <tr>
+        <th colspan="3"></th>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentMonAm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentMonPm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentTueAm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentTuePm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentWedAm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentWedPm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentThuAm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentThuPm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentFriAm}" >[[${fillin.abbreviationName}]]</td>
+        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentFriPm}">[[${fillin.abbreviationName}]]</td>
+    </tr>
+</table>
 
 </body>
-
 </html>

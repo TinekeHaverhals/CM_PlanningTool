@@ -52,5 +52,21 @@ public class DateNameDAO {
         DateName dateName = null;
         return dateName;
     }
+
+    public DateName getDateNames(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT Date FROM Date WHERE Date = ? ");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<DateName> dateNames = new ArrayList<>();
+        DateName dateName = null;
+        if (rs != null) {
+            while (rs.next()) {
+                dateName = new DateName();
+                dateName.setNameDate(rs.getString("date"));
+            }
+        }
+        return dateName;
+    }
 }
 

@@ -16,6 +16,7 @@ public class Function {
     private String department;
     private String namefunction;
     private int total;
+    private String week;
 
     public Function(){
 
@@ -68,4 +69,12 @@ public class Function {
         return this;
     }
 
+    public String getWeek() {
+        return week;
+    }
+
+    public Function setWeek(String week) {
+        this.week = week;
+        return this;
+    }
 }
