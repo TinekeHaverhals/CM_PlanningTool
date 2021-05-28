@@ -59,7 +59,87 @@
     <select name="week" id="week">
         <option th:each="fillin: ${fillinLCMWeek}">[[${fillin.week}]]</option>
     </select>
-
+    <br>
+    <br>
+    <table id="t01" style="width: 80%" th:each="fillin: ${searchOwn}">
+        <tr>
+            <th>Days:</th>
+            <td>Funtion:</td>
+            <td>Tasks:</td>
+            <td>Location:</td>
+            <td>Absent:</td>
+        </tr>
+        <tr>
+            <th>Mon AM</th>
+            <td >[[${fillin.monAmFunction}]]</td>
+            <td>[[${fillin.monAmTask}]]</td>
+            <td>[[${fillin.monAmLocation}]]</td>
+            <td>[[${fillin.monAmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Mon PM</th>
+            <td>[[${fillin.monPmFunction}]]</td>
+            <td>[[${fillin.monPmTask}]]</td>
+            <td>[[${fillin.monPmLocation}]]</td>
+            <td>[[${fillin.monPmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Tue AM</th>
+            <td>[[${fillin.tueAmFunction}]]</td>
+            <td>[[${fillin.tueAmTask}]]</td>
+            <td>[[${fillin.tueAmLocation}]]</td>
+            <td>[[${fillin.tueAmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Tue PM</th>
+            <td>[[${fillin.tuePmFunction}]]</td>
+            <td>[[${fillin.tuePmTask}]]</td>
+            <td>[[${fillin.tuePmLocation}]]</td>
+            <td>[[${fillin.tuePmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Wed AM</th>
+            <td>[[${fillin.wedAmFunction}]]</td>
+            <td>[[${fillin.wedAmTask}]]</td>
+            <td>[[${fillin.wedAmLocation}]]</td>
+            <td>[[${fillin.wedAmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Wed PM</th>
+            <td>[[${fillin.wedPmFunction}]]</td>
+            <td>[[${fillin.wedPmTask}]]</td>
+            <td>[[${fillin.wedPmLocation}]]</td>
+            <td>[[${fillin.wedPmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Thu AM</th>
+            <td>[[${fillin.thuAmFunction}]]</td>
+            <td>[[${fillin.thuAmTask}]]</td>
+            <td>[[${fillin.thuAmLocation}]]</td>
+            <td>[[${fillin.thuAmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Thu PM</th>
+            <td>[[${fillin.thuPmFunction}]]</td>
+            <td>[[${fillin.thuPmTask}]]</td>
+            <td>[[${fillin.thuPmLocation}]]</td>
+            <td>[[${fillin.thuPmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Fri AM</th>
+            <td>[[${fillin.friAmFunction}]]</td>
+            <td>[[${fillin.friAmTask}]]</td>
+            <td>[[${fillin.friAmLocation}]]</td>
+            <td>[[${fillin.friAmAbsent}]]</td>
+        </tr>
+        <tr>
+            <th>Fri PM</th>
+            <td>[[${fillin.friPmFunction}]]</td>
+            <td>[[${fillin.friPmTask}]]</td>
+            <td>[[${fillin.friPmLocation}]]</td>
+            <td>[[${fillin.friPmAbsent}]]</td>
+        </tr>
+    </table>
     <p>You only have to choose a task if your function is tasks</p>
     <h3><u>Monday</u> </h3>
     <label>AM :</label>

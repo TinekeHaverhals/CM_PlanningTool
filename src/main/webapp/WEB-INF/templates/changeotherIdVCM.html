@@ -82,6 +82,10 @@
             <select name="week" id="week">
                 <option th:each="fillin: ${dateNames}">[[${fillin.nameDate}]]</option>
             </select>
+            <label for="nameMember">Choose a name:</label>
+            <select name="nameMember" id="nameMember">
+                <option th:each="fillin: ${staffMembersVCM}">[[${fillin.name}]]</option>
+            </select>
             <input type="submit" class="registerbtn" value="search">
         </div>
     </form>

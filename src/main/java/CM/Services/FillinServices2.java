@@ -17,6 +17,10 @@ public class FillinServices2 {
     @Autowired
     private Fillin2DAO fillin2DAO;
 
+    public List<Fillin> getTableFillinVCMMail(String week) throws SQLException {
+        return fillin2DAO.getTableFillinVCMMail(week);
+    }
+
     public List<Fillin> getTableFillinVCMMonAmMail(String week) throws SQLException {
         return fillin2DAO.getTableFillinVCMMonAmMail(week);
     }
@@ -531,43 +535,11 @@ public class FillinServices2 {
         return fillin2DAO.getTableFillinVCMTaskFriPm(week);
     }
 
-    public List<Fillin>  getTableFillinVCMAbsentMonAm(String week)throws SQLException {
-        return fillin2DAO.getTableFillinVCMAbsentMonAm(week);
+    public List<Fillin>  getTableFillinVCMAbsent(String week)throws SQLException {
+        return fillin2DAO.getTableFillinVCMAbsent(week);
     }
 
 
-    public List<Fillin>  getTableFillinVCMAbsentMonPm(String week)throws SQLException {
-        return fillin2DAO.getTableFillinVCMAbsentMonPm(week);
-    }
 
-    public List<Fillin>  getTableFillinVCMAbsentTueAm(String week)throws SQLException {
-        return fillin2DAO.getTableFillinVCMAbsentTueAm(week);
-    }
-    public List<Fillin>  getTableFillinVCMAbsentTuePm(String week)throws SQLException {
-        return fillin2DAO.getTableFillinVCMAbsentTuePm(week);
-    }
 
-    public List<Fillin>  getTableFillinVCMAbsentWedAm(String week)throws SQLException {
-        return fillin2DAO. getTableFillinVCMAbsentWedAm(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentWedPm(String week)throws SQLException {
-        return fillin2DAO.getTableFillinVCMAbsentWedPm(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentThuAm(String week)throws SQLException {
-        return fillin2DAO.getTableFillinVCMAbsentThuAm(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentThuPm(String week)throws SQLException {
-        return fillin2DAO.getTableFillinVCMAbsentThuPm(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentFriAm(String week)throws SQLException {
-        return fillin2DAO. getTableFillinVCMAbsentFriAm(week);
-    }
-
-    public List<Fillin>  getTableFillinVCMAbsentFriPm(String week)throws SQLException {
-        return fillin2DAO. getTableFillinVCMAbsentFriPm(week);
-    }
 }

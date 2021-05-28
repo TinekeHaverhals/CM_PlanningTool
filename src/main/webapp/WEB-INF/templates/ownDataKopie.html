@@ -80,7 +80,7 @@
     <p th:each="fillin: ${ownDataWeek}" > [[${fillin.week}]]</p>
 
 
-    <table id="t01" style="width: 80%">
+    <table id="t01" style="width: 80%" th:each="fillin: ${searchOwn}">
         <tr>
             <th>Days:</th>
             <td>Funtion:</td>
@@ -90,73 +90,73 @@
         </tr>
         <tr>
             <th>Mon AM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monAmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monAmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monAmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monAmAbsent}]]</td>
+            <td >[[${fillin.monAmFunction}]]</td>
+            <td>[[${fillin.monAmTask}]]</td>
+            <td>[[${fillin.monAmLocation}]]</td>
+            <td>[[${fillin.monAmAbsent}]]</td>
         </tr>
         <tr>
             <th>Mon PM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monPmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monPmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monPmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.monPmAbsent}]]</td>
+            <td>[[${fillin.monPmFunction}]]</td>
+            <td>[[${fillin.monPmTask}]]</td>
+            <td>[[${fillin.monPmLocation}]]</td>
+            <td>[[${fillin.monPmAbsent}]]</td>
         </tr>
         <tr>
             <th>Tue AM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tueAmAbsent}]]</td>
+            <td>[[${fillin.tueAmFunction}]]</td>
+            <td>[[${fillin.tueAmTask}]]</td>
+            <td>[[${fillin.tueAmLocation}]]</td>
+            <td>[[${fillin.tueAmAbsent}]]</td>
         </tr>
         <tr>
             <th>Tue PM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.tuePmAbsent}]]</td>
+            <td>[[${fillin.tuePmFunction}]]</td>
+            <td>[[${fillin.tuePmTask}]]</td>
+            <td>[[${fillin.tuePmLocation}]]</td>
+            <td>[[${fillin.tuePmAbsent}]]</td>
         </tr>
         <tr>
             <th>Wed AM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedAmAbsent}]]</td>
+            <td>[[${fillin.wedAmFunction}]]</td>
+            <td>[[${fillin.wedAmTask}]]</td>
+            <td>[[${fillin.wedAmLocation}]]</td>
+            <td>[[${fillin.wedAmAbsent}]]</td>
         </tr>
         <tr>
             <th>Wed PM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.wedPmAbsent}]]</td>
+            <td>[[${fillin.wedPmFunction}]]</td>
+            <td>[[${fillin.wedPmTask}]]</td>
+            <td>[[${fillin.wedPmLocation}]]</td>
+            <td>[[${fillin.wedPmAbsent}]]</td>
         </tr>
         <tr>
             <th>Thu AM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuAmAbsent}]]</td>
+            <td>[[${fillin.thuAmFunction}]]</td>
+            <td>[[${fillin.thuAmTask}]]</td>
+            <td>[[${fillin.thuAmLocation}]]</td>
+            <td>[[${fillin.thuAmAbsent}]]</td>
         </tr>
         <tr>
             <th>Thu PM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.thuPmAbsent}]]</td>
+            <td>[[${fillin.thuPmFunction}]]</td>
+            <td>[[${fillin.thuPmTask}]]</td>
+            <td>[[${fillin.thuPmLocation}]]</td>
+            <td>[[${fillin.thuPmAbsent}]]</td>
         </tr>
         <tr>
             <th>Fri AM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friAmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friAmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friAmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friAmAbsent}]]</td>
+            <td>[[${fillin.friAmFunction}]]</td>
+            <td>[[${fillin.friAmTask}]]</td>
+            <td>[[${fillin.friAmLocation}]]</td>
+            <td>[[${fillin.friAmAbsent}]]</td>
         </tr>
         <tr>
             <th>Fri PM</th>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friPmFunction}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friPmTask}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friPmLocation}]]</td>
-            <td th:each="fillin: ${searchOwn}">[[${fillin.friPmAbsent}]]</td>
+            <td>[[${fillin.friPmFunction}]]</td>
+            <td>[[${fillin.friPmTask}]]</td>
+            <td>[[${fillin.friPmLocation}]]</td>
+            <td>[[${fillin.friPmAbsent}]]</td>
         </tr>
     </table>
     <div>

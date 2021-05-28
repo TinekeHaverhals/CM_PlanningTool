@@ -75,7 +75,8 @@
     </div>
 </div>
 
-<p th:each="fillin: ${fillinLCMWeek}" >Week :  [[${fillin.week}]]</p>
+<p th:each="fillin: ${fillinMCFGWeek}" >Week :  [[${fillin.week}]]</p>
+
 <table>
     <tr>
         <th colspan="3"></th>
@@ -100,11 +101,26 @@
         <th class="schema2">Fri PM</th>
         <th class="schema2">Loc:</th>
     </tr>
+    <tr th:each="fillin: ${fillinLCMMonAmTel}">
+        <th>SD 1L LCM</th>
+        <th>7u30</th>
+        <th></th>
+        <td colspan="2" >[[${fillin.MonAmFunction}]]</td>
+        <td colspan="2" >[[${fillin.MonPmFunction}]]</td>
+        <td colspan="2" >[[${fillin.TueAmFunction}]]</td>
+        <td colspan="2" >[[${fillin.TuePmFunction}]]</td>
+        <td colspan="2" >[[${fillin.WedAmFunction}]]</td>
+        <td colspan="2" >[[${fillin.WedPmFunction}]]</td>
+        <td colspan="2" >[[${fillin.ThuAmFunction}]]</td>
+        <td colspan="2" >[[${fillin.ThuPmFunction}]]</td>
+        <td colspan="2" >[[${fillin.FriAmFunction}]]</td>
+        <td colspan="2" >[[${fillin.FriPmFunction}]]</td>
+    </tr>
     <tr>
         <th>SD 1L LCM</th>
         <th>7u30</th>
         <th></th>
-        <th th:each="fillin: ${fillinLCMMonAmTel}">[[${fillin.abbreviationName}]]</th>
+        <th th:each="fillin: ${fillinLCMMonAmTel}" abbr title=[[${fillin.abbreviationName}]]>[[${fillin.abbreviationName}]]</th>
         <th th:each="fillin: ${fillinLCMMonAmTel}">[[${fillin.abbreviationLocation}]]</th>
         <th th:each="fillin: ${fillinLCMMonPmTel}">[[${fillin.abbreviationName}]]</th>
         <th th:each="fillin: ${fillinLCMMonPmTel}">[[${fillin.abbreviationLocation}]]</th>
@@ -308,18 +324,19 @@
     <tr>
         <th colspan="23" class="schema">Absent</th>
     </tr>
-    <tr >
-        <th colspan="3"></th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentMonAm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentMonPm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentTueAm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentTuePm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentWedAm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentWedPm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentThuAm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentThuPm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentFriAm}" >[[${fillin.abbreviationName}]]</th>
-        <th colspan="2" th:each="fillin: ${tableFillinLCMAbsentFriPm}" >[[${fillin.abbreviationName}]]</th>
+
+    <tr th:each="fillin: ${tableFillinLCMAbsent}">
+        <td colspan="3"></td>
+        <td colspan="2" >[[${fillin.MonAmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.MonPmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.TueAmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.TuePmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.WedAmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.WedPmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.ThuAmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.ThuPmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.FriAmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.FriPmAbsent}]]</td>
     </tr>
 </table>
 </body>

@@ -18,6 +18,45 @@ import java.util.List;
 @Repository
 public class Fillin2DAO {
 
+    public List<Fillin> getTableFillinVCMMail(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT  MonAmLocation,    MonPmLocation , \n" +
+                "                 TueAmLocation,  TuePmLocation,\n" +
+                "                 WedAmLocation,   WedPmLocation,\n" +
+                "                 ThuAmLocation, ThuPmLocation ,\n" +
+                "                 FriAmLocation,   FriPmLocation\n" +
+                "                FROM Fillin \n" +
+                "                INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  \n" +
+                "                WHERE Week = ? AND Fillin.Department = 'VCM' AND\n" +
+                "                (Fillin.MonAmFunction = '1L Mail' OR Fillin.MonPmFunction = '1L Mail' OR Fillin.TueAmFunction = '1L Mail' OR Fillin.TuePmFunction = '1L Mail'\n" +
+                "                OR Fillin.WedAmFunction = '1L Mail' OR Fillin.WedPmFunction = '1L Mail' OR Fillin.ThuAmFunction = '1L Mail' OR Fillin.ThuPmFunction = '1L Mail'\n" +
+                "                OR Fillin.FriAmFunction = '1L Mail' OR Fillin.FriPmFunction = '1L Mail' )");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember;
+        if (rs != null) {
+            while (rs.next()) {
+                fillin = new Fillin();
+                staffMember = new StaffMember();
+                fillin.setMonAmLocation(rs.getString("monAmlocation"));
+                fillin.setMonPmLocation(rs.getString("monPmlocation"));
+                fillin.setTueAmLocation(rs.getString("tueAmlocation"));
+                fillin.setTuePmLocation(rs.getString("tuePmlocation"));
+                fillin.setWedAmLocation(rs.getString("wedAmlocation"));
+                fillin.setWedPmLocation(rs.getString("wedPmlocation"));
+                fillin.setThuAmLocation(rs.getString("thuAmlocation"));
+                fillin.setThuPmLocation(rs.getString("thuPmlocation"));
+                fillin.setFriAmLocation(rs.getString("friAmlocation"));
+                fillin.setFriPmLocation(rs.getString("friPmlocation"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
+
     public List<Fillin> getTableFillinVCMMonAmMail(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.Name, StaffMembers.AbbreviationName, MonAmLocation, Location.AbbreviationLocation FROM Fillin " +
@@ -3520,13 +3559,20 @@ public class Fillin2DAO {
         return fillins;
     }
 
+
     public List<Fillin> getTableFillinVCMAbsent(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName, MonAmAbsent, MonPmAbsent, TueAmAbsent, TuePmAbsent, WedAmAbsent,WedPmAbsent, ThuAmAbsent, ThuPmAbsent,FriAmAbsent, FriPmAbsent\n" +
-                "FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id \n" +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.MonAmAbsent = 'Absent' OR Fillin.MonPmAbsent = 'Absent'\n" +
-                "OR Fillin.TueAmAbsent = 'Absent' OR Fillin.TuePmAbsent = 'Absent' OR Fillin.WedAmAbsent = 'Absent' OR Fillin.WedPmAbsent = 'Absent'\n" +
-                "OR Fillin.ThuAmAbsent = 'Absent' OR Fillin.ThuPmAbsent = 'Absent' OR Fillin.FriAmAbsent = 'Absent' OR Fillin.FriPmAbsent = 'Absent'\n");
+        PreparedStatement statement = connection.prepareStatement("SELECT CONCAT (StaffMembers.AbbreviationName,'   ', MonAmAbsent) AS MonAmAbsent,   CONCAT (StaffMembers.AbbreviationName,'   ', MonPmAbsent) AS MonPmAbsent , \n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', TueAmAbsent) AS TueAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', TuePmAbsent) AS TuePmAbsent,\n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', WedAmAbsent) AS WedAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', WedPmAbsent) AS WedPmAbsent,\n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', ThuAmAbsent) AS ThuAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', ThuPmAbsent) AS ThuPmAbsent ,\n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', FriAmAbsent) AS FriAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', FriPmAbsent) AS FriPmAbsent\n" +
+                "FROM Fillin \n" +
+                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  \n" +
+                "WHERE Week = ? AND Fillin.Department = 'VCM' AND\n" +
+                "(Fillin.MonAmAbsent = 'Absent' OR Fillin.MonPmAbsent = 'Absent' OR Fillin.TueAmAbsent = 'Absent' OR Fillin.TuePmAbsent = 'Absent'\n" +
+                "OR Fillin.WedAmAbsent = 'Absent' OR Fillin.WedPmAbsent = 'Absent' OR Fillin.ThuAmAbsent = 'Absent' OR Fillin.ThuPmAbsent = 'Absent' \n" +
+                "OR Fillin.FriAmAbsent = 'Absent' OR Fillin.FriPmAbsent = 'Absent' )\n");
         statement.setString(1, week);
         ResultSet rs = statement.executeQuery();
         List<Fillin> fillins = new ArrayList<>();
@@ -3536,221 +3582,21 @@ public class Fillin2DAO {
             while (rs.next()) {
                 fillin = new Fillin();
                 staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
+                fillin.setMonAmAbsent(rs.getString("MonAmAbsent"));
+                fillin.setMonPmAbsent(rs.getString("MonPmAbsent"));
+                fillin.setTueAmAbsent(rs.getString("TueAmAbsent"));
+                fillin.setTuePmAbsent(rs.getString("TuePmAbsent"));
+                fillin.setWedAmAbsent(rs.getString("WedAmAbsent"));
+                fillin.setWedPmAbsent(rs.getString("WedPmAbsent"));
+                fillin.setThuAmAbsent(rs.getString("ThuAmAbsent"));
+                fillin.setThuPmAbsent(rs.getString("ThuAmAbsent"));
+                fillin.setFriAmAbsent(rs.getString("FriAmAbsent"));
+                fillin.setFriPmAbsent(rs.getString("FriAmAbsent"));
                 fillins.add(fillin);
             }
         }
         return fillins;
     }
 
-    public List<Fillin> getTableFillinVCMAbsentMonAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.MonAmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentMonPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.MonPmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentTueAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.TueAmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentTuePm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.TuePmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentWedAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.WedAmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentWedPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName " +
-                "FROM Fillin INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.WedPmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentThuAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.ThuAmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentThuPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.ThuPmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentFriAm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.FriAmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
-
-    public List<Fillin> getTableFillinVCMAbsentFriPm(String week) throws SQLException {
-        Connection connection = ConnectionFactory.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT StaffMembers.AbbreviationName FROM Fillin " +
-                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  " +
-                "WHERE Week = ? AND Fillin.Department='VCM' AND Fillin.FriPmAbsent = 'Absent'");
-        statement.setString(1, week);
-        ResultSet rs = statement.executeQuery();
-        List<Fillin> fillins = new ArrayList<>();
-        Fillin fillin = null;
-        StaffMember staffMember = null;
-        if (rs != null) {
-            while (rs.next()) {
-                fillin = new Fillin();
-                staffMember = new StaffMember();
-                fillin.setAbbreviationName(rs.getString("abbreviationName"));
-                fillins.add(fillin);
-            }
-        }
-        return fillins;
-    }
 
 }

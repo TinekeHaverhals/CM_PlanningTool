@@ -79,30 +79,20 @@
         <th class="schema2">Fri PM</th>
         <th class="schema2">Loc:</th>
     </tr>
-    <tr>
+    <tr th:each="fillin: ${fillinVCMMail}">
         <th>SD 1L VCM</th>
         <th>8u</th>
         <th>mail</th>
-        <td th:each="fillin: ${fillinVCMMonAmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMMonAmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMMonPmMail}">[[${fillin.abbreviationName}]] </td>
-        <td th:each="fillin: ${fillinVCMMonPmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMTueAmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMTueAmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMTuePmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMTuePmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMWedAmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMWedAmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMWedPmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMWedPmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMThuAmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMThuAmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMThuPmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMThuPmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMFriAmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMFriAmMail}">[[${fillin.abbreviationLocation}]]</td>
-        <td th:each="fillin: ${fillinVCMFriPmMail}">[[${fillin.abbreviationName}]]</td>
-        <td th:each="fillin: ${fillinVCMFriPmMail}">[[${fillin.abbreviationLocation}]]</td>
+        <td colspan="2">[[${fillin.monAmLocation}]]</td>
+        <td colspan="2">[[${fillin.monPmLocation}]]</td>
+        <td colspan="2">[[${fillin.tueAmLocation}]]</td>
+        <td colspan="2">[[${fillin.tuePmLocation}]]</td>
+        <td colspan="2">[[${fillin.wedAmLocation}]]</td>
+        <td colspan="2">[[${fillin.wedPmLocation}]]</td>
+        <td colspan="2">[[${fillin.thuAmLocation}]]</td>
+        <td colspan="2">[[${fillin.thuAmLocation}]]</td>
+        <td colspan="2">[[${fillin.friAmLocation}]]</td>
+        <td colspan="2"> [[${fillin.friAmLocation}]]</td>
     </tr>
     <tr>
         <th></th>

@@ -57,4 +57,5 @@ public class StaffMemberServices {
     public List<StaffMember> getAllStaffMemberVCM() throws SQLException {
         return staffMemberDAO.getAllStaffMemberVCM();
     }
+
 }

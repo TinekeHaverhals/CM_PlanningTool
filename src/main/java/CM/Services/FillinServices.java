@@ -461,31 +461,8 @@ public class FillinServices {
         return fillinDAO.getDateName();
     }
 
-
     public List<Fillin> getDateNameId(int IdStaffMember) throws SQLException {
         return fillinDAO.getDateNameId(IdStaffMember);
-    }
-
-    public Fillin getChangeMonday(int idStaffMember, String week, String monAmFunction, String monAmTask, String monAmLocation, String monAmAbsent, String monPmFunction, String monPmTask, String monPmLocation, String monPmAbsent) throws SQLException {
-        return fillinDAO.getChangeMonday( idStaffMember, week, monAmFunction, monAmTask, monAmLocation, monAmAbsent, monPmFunction, monPmTask, monPmLocation, monPmAbsent );
-    }
-
-    public Fillin getChangeTuesday(int idStaffMember, String week, String tueAmFunction, String tueAmTask, String tueAmLocation, String tueAmAbsent, String tuePmFunction, String tuePmTask, String tuePmLocation, String tuePmAbsent)throws SQLException  {
-    return fillinDAO.getChangeTuesday(idStaffMember, week, tueAmFunction, tueAmTask, tueAmLocation, tueAmAbsent, tuePmFunction, tuePmTask, tuePmLocation, tuePmAbsent);
-    }
-
-    public Fillin getChangeWednesday(int idStaffMember, String week, String wedAmFunction, String wedAmTask, String wedAmLocation, String wedAmAbsent, String wedPmFunction, String wedPmTask, String wedPmLocation, String wedPmAbsent)throws SQLException  {
-        return fillinDAO.getChangeWednesday(idStaffMember, week, wedAmFunction, wedAmTask, wedAmLocation, wedAmAbsent, wedPmFunction, wedPmTask, wedPmLocation, wedPmAbsent);
-    }
-
-    public Fillin getChangeThursday(int idStaffMember, String week, String thuAmFunction, String thuAmTask, String thuAmLocation, String thuAmAbsent, String thuPmFunction, String thuPmTask, String thuPmLocation, String thuPmAbsent)throws SQLException  {
-        return fillinDAO.getChangeThursday(idStaffMember, week, thuAmFunction, thuAmTask, thuAmLocation, thuAmAbsent, thuPmFunction, thuPmTask, thuPmLocation, thuPmAbsent);
-
-    }
-
-    public Fillin getChangeFriday(int idStaffMember, String week, String friAmFunction, String friAmTask, String friAmLocation, String friAmAbsent, String friPmFunction, String friPmTask, String friPmLocation, String friPmAbsent) throws SQLException {
-        return fillinDAO.getChangeFriday(idStaffMember, week, friAmFunction, friAmTask, friAmLocation, friAmAbsent, friPmFunction, friPmTask, friPmLocation, friPmAbsent);
-
     }
 
     public List<Fillin> getAllfunctionVCMMonAm(String week) throws SQLException {
@@ -607,5 +584,12 @@ public class FillinServices {
     public List<Fillin> getAllfunctionMCFGFriPm(String week) throws SQLException {
         return fillinDAO.getAllfunctionMCFGFriPm( week);
     }
-}
 
+    public Fillin  getSearchOwnDateId(String week,String nameMember) throws SQLException {
+        return fillinDAO. getSearchOwnDateId(week, nameMember);
+    }
+
+    public List<Fillin> getStaffMemberchangeFillin(String nameMember) throws SQLException {
+        return fillinDAO.getStaffMemberchangeFillin(nameMember);
+    }
+}

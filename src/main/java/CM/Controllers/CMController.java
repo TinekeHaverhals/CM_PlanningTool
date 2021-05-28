@@ -419,6 +419,7 @@ public class CMController {
         model.addAttribute("fillinLCMWeek", fillinServices.getTableFillinLCMWeek(fillin.getWeek()));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
         model.addAttribute("functionLCMsMonAm", fillinServices.getAllfunctionLCMMonAm(fillin.getWeek()));
         model.addAttribute("functionLCMsMonPm", fillinServices.getAllfunctionLCMMonPm(fillin.getWeek()));
         model.addAttribute("functionLCMsTueAm", fillinServices.getAllfunctionLCMTueAm(fillin.getWeek()));
@@ -459,6 +460,7 @@ public class CMController {
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
         model.addAttribute("fillinLCMWeek", fillinServices.getTableFillinLCMWeek(fillin.getWeek()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionLCMsMonAm", fillinServices.getAllfunctionLCMMonAm(fillin.getWeek()));
@@ -501,6 +503,7 @@ public class CMController {
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
         model.addAttribute("fillinVCMWeek", fillinServices.getTableFillinVCMWeek(fillin.getWeek()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionVCMsMonAm", fillinServices.getAllfunctionVCMMonAm(fillin.getWeek()));
@@ -543,6 +546,7 @@ public class CMController {
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
         model.addAttribute("fillinVCMWeek", fillinServices.getTableFillinVCMWeek(fillin.getWeek()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionVCMsMonAm", fillinServices.getAllfunctionVCMMonAm(fillin.getWeek()));
@@ -585,6 +589,7 @@ public class CMController {
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
         model.addAttribute("fillinMCFGWeek", fillinServices.getTableFillinMCFGWeek(fillin.getWeek()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionMCFGsMonAm", fillinServices.getAllfunctionMCFGMonAm(fillin.getWeek()));
@@ -628,6 +633,7 @@ public class CMController {
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
         model.addAttribute("fillinMCFGWeek", fillinServices.getTableFillinMCFGWeek(fillin.getWeek()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDate(fillin.getWeek(),IdStaffMember ));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("functionMCFGsMonAm", fillinServices.getAllfunctionMCFGMonAm(fillin.getWeek()));
@@ -747,6 +753,7 @@ public class CMController {
         model.addAttribute("tableFillinLCMTaskThuPm", fillinServices4.getTableFillinLCMTaskThuPm(fillin.getWeek()));
         model.addAttribute("tableFillinLCMTaskFriAm", fillinServices4.getTableFillinLCMTaskFriAm(fillin.getWeek()));
         model.addAttribute("tableFillinLCMTaskFriPm", fillinServices4.getTableFillinLCMTaskFriPm(fillin.getWeek()));
+        model.addAttribute("tableFillinLCMAbsent", fillinServices4.getTableFillinLCMAbsent(fillin.getWeek()));
         model.addAttribute("tableFillinLCMAbsentMonAm", fillinServices4.getTableFillinLCMAbsentMonAm(fillin.getWeek()));
         model.addAttribute("tableFillinLCMAbsentMonPm", fillinServices4.getTableFillinLCMAbsentMonPm(fillin.getWeek()));
         model.addAttribute("tableFillinLCMAbsentTueAm", fillinServices4.getTableFillinLCMAbsentTueAm(fillin.getWeek()));
@@ -876,11 +883,13 @@ public class CMController {
         return "VCM";
     }
 
+
     @GetMapping("searchVCM")
     public String searchVCM(Model model, HttpSession session, StaffMember staffMember, Fillin fillin, DateName dateName) throws SQLException {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinVCMWeek", fillinServices.getTableFillinVCMWeek(fillin.getWeek()));
+        model.addAttribute("fillinVCMMail", fillinServices2.getTableFillinVCMMail(fillin.getWeek()));
         model.addAttribute("fillinVCMMonAmMail", fillinServices2.getTableFillinVCMMonAmMail(fillin.getWeek()));
         model.addAttribute("fillinVCMMonPmMail", fillinServices2.getTableFillinVCMMonPmMail(fillin.getWeek()));
         model.addAttribute("fillinVCMTueAmMail", fillinServices2.getTableFillinVCMTueAmMail(fillin.getWeek()));
@@ -1011,17 +1020,7 @@ public class CMController {
         model.addAttribute("fillinVCMThuPmSRPer2", fillinServices2.getTableFillinVCMThuPmSRPer2(fillin.getWeek()));
         model.addAttribute("fillinVCMFriAmSRPer2", fillinServices2.getTableFillinVCMFriAmSRPer2(fillin.getWeek()));
         model.addAttribute("fillinVCMFriPmSRPer2", fillinServices2.getTableFillinVCMFriPmSRPer2(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentMonAm", fillinServices2.getTableFillinVCMAbsentMonAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentMonPm", fillinServices2.getTableFillinVCMAbsentMonPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentTueAm", fillinServices2.getTableFillinVCMAbsentTueAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentTuePm", fillinServices2.getTableFillinVCMAbsentTuePm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentWedAm", fillinServices2.getTableFillinVCMAbsentWedAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentWedPm", fillinServices2.getTableFillinVCMAbsentWedPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentThuAm", fillinServices2.getTableFillinVCMAbsentThuAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentThuPm", fillinServices2.getTableFillinVCMAbsentThuPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentFriAm", fillinServices2.getTableFillinVCMAbsentFriAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentFriPm", fillinServices2.getTableFillinVCMAbsentFriPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMTaskMonAm", fillinServices2.getTableFillinVCMTaskMonAm(fillin.getWeek()));
+         model.addAttribute("tableFillinVCMTaskMonAm", fillinServices2.getTableFillinVCMTaskMonAm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskMonPm", fillinServices2.getTableFillinVCMTaskMonPm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskTueAm", fillinServices2.getTableFillinVCMTaskTueAm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskTuePm", fillinServices2.getTableFillinVCMTaskTuePm(fillin.getWeek()));
@@ -1048,6 +1047,7 @@ public class CMController {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
         model.addAttribute("dateNames", dateNameServices.getAllDateName());
         model.addAttribute("fillinVCMWeek", fillinServices.getTableFillinVCMWeek(fillin.getWeek()));
+        model.addAttribute("fillinVCMMail", fillinServices2.getTableFillinVCMMail(fillin.getWeek()));
         model.addAttribute("fillinVCMMonAmMail", fillinServices2.getTableFillinVCMMonAmMail(fillin.getWeek()));
         model.addAttribute("fillinVCMMonPmMail", fillinServices2.getTableFillinVCMMonPmMail(fillin.getWeek()));
         model.addAttribute("fillinVCMTueAmMail", fillinServices2.getTableFillinVCMTueAmMail(fillin.getWeek()));
@@ -1178,17 +1178,7 @@ public class CMController {
         model.addAttribute("fillinVCMThuPmSRPer2", fillinServices2.getTableFillinVCMThuPmSRPer2(fillin.getWeek()));
         model.addAttribute("fillinVCMFriAmSRPer2", fillinServices2.getTableFillinVCMFriAmSRPer2(fillin.getWeek()));
         model.addAttribute("fillinVCMFriPmSRPer2", fillinServices2.getTableFillinVCMFriPmSRPer2(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentMonAm", fillinServices2.getTableFillinVCMAbsentMonAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentMonPm", fillinServices2.getTableFillinVCMAbsentMonPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentTueAm", fillinServices2.getTableFillinVCMAbsentTueAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentTuePm", fillinServices2.getTableFillinVCMAbsentTuePm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentWedAm", fillinServices2.getTableFillinVCMAbsentWedAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentWedPm", fillinServices2.getTableFillinVCMAbsentWedPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentThuAm", fillinServices2.getTableFillinVCMAbsentThuAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentThuPm", fillinServices2.getTableFillinVCMAbsentThuPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentFriAm", fillinServices2.getTableFillinVCMAbsentFriAm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMAbsentFriPm", fillinServices2.getTableFillinVCMAbsentFriPm(fillin.getWeek()));
-        model.addAttribute("tableFillinVCMTaskMonAm", fillinServices2.getTableFillinVCMTaskMonAm(fillin.getWeek()));
+          model.addAttribute("tableFillinVCMTaskMonAm", fillinServices2.getTableFillinVCMTaskMonAm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskMonPm", fillinServices2.getTableFillinVCMTaskMonPm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskTueAm", fillinServices2.getTableFillinVCMTaskTueAm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskTuePm", fillinServices2.getTableFillinVCMTaskTuePm(fillin.getWeek()));
@@ -2491,8 +2481,8 @@ public class CMController {
     public String changeotherIdPageLCM(Model model, HttpSession session, Fillin fillin) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
-        int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
+        model.addAttribute("staffMembersLCM", staffMemberServices.getAllStaffMemberLCM());
         return "changeotherIdLCM";
     }
 
@@ -2501,8 +2491,9 @@ public class CMController {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
-        model.addAttribute("dateNames", fillinServices.getAllDateName());
         model.addAttribute("fillinLCMWeek", fillinServices.getTableFillinLCMWeek(fillin.getWeek()));
+        model.addAttribute("staffMemberName", fillinServices.getStaffMemberchangeFillin(fillin.getNameMember()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDateId(fillin.getWeek(),fillin.getNameMember()));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
         model.addAttribute("staffMembersLCM", staffMemberServices.getAllStaffMemberLCM());
@@ -2525,6 +2516,7 @@ public class CMController {
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
+        model.addAttribute("staffMembersLCM", staffMemberServices.getAllStaffMemberLCM());
         model.addAttribute("changeFillinID", fillinServices.getChangeFillinID (fillin.getNameMember(), fillin.getWeek(),fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "changeotherIdLCM";
     }
@@ -2535,17 +2527,20 @@ public class CMController {
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
+        model.addAttribute("staffMembersMCFG", staffMemberServices.getAllStaffMemberMCFG());
         return "changeotherIdMCFG";
     }
 
     @GetMapping("changeotherIdMCFG")
     public String changeotherIdMCFG(Model model, HttpSession session , Fillin fillin) throws Exception {
         model.addAttribute("staffMember", session.getAttribute("staffMember"));
-        model.addAttribute("staffMembersMCFG", staffMemberServices.getAllStaffMemberMCFG());
+        StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
+        int IdStaffMember = staffMember.getId();
+        model.addAttribute("staffMemberName", fillinServices.getStaffMemberchangeFillin(fillin.getNameMember()));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("staffMembersMCFG", staffMemberServices.getAllStaffMemberMCFG());
         model.addAttribute("fillinMCFGWeek", fillinServices.getTableFillinMCFGWeek(fillin.getWeek()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDateId(fillin.getWeek(),fillin.getNameMember()));
         model.addAttribute("functionMCFGsMonAm", fillinServices.getAllfunctionMCFGMonAm(fillin.getWeek()));
         model.addAttribute("functionMCFGsMonPm", fillinServices.getAllfunctionMCFGMonPm(fillin.getWeek()));
         model.addAttribute("functionMCFGsTueAm", fillinServices.getAllfunctionMCFGTueAm(fillin.getWeek()));
@@ -2566,6 +2561,7 @@ public class CMController {
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
         model.addAttribute("changeFillinID", fillinServices.getChangeFillinID (fillin.getNameMember(), fillin.getWeek(),fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
+        model.addAttribute("staffMembersMCFG", staffMemberServices.getAllStaffMemberMCFG());
         return "changeotherIdMCFG";
     }
 
@@ -2575,6 +2571,7 @@ public class CMController {
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
+        model.addAttribute("staffMembersVCM", staffMemberServices.getAllStaffMemberVCM());
         return "changeotherIdVCM";
     }
 
@@ -2587,7 +2584,8 @@ public class CMController {
         model.addAttribute("fillinVCMWeek", fillinServices.getTableFillinVCMWeek(fillin.getWeek()));
         model.addAttribute("tasks", tasksServices.getTableTask());
         model.addAttribute("locations", locationServices.getTableLocation());
-        model.addAttribute("staffMembersVCM", staffMemberServices.getAllStaffMemberVCM());
+        model.addAttribute("staffMemberName", fillinServices.getStaffMemberchangeFillin(fillin.getNameMember()));
+        model.addAttribute("searchOwn", fillinServices.getSearchOwnDateId(fillin.getWeek(),fillin.getNameMember()));
         model.addAttribute("functionVCMsMonAm", fillinServices.getAllfunctionVCMMonAm(fillin.getWeek()));
         model.addAttribute("functionVCMsMonPm", fillinServices.getAllfunctionVCMMonPm(fillin.getWeek()));
         model.addAttribute("functionVCMsTueAm", fillinServices.getAllfunctionVCMTueAm(fillin.getWeek()));
@@ -2607,6 +2605,7 @@ public class CMController {
         StaffMember staffMember = (StaffMember) session.getAttribute("staffMember");
         int IdStaffMember = staffMember.getId();
         model.addAttribute("dateNames", fillinServices.getAllDateName());
+        model.addAttribute("staffMembersVCM", staffMemberServices.getAllStaffMemberVCM());
         model.addAttribute("changeFillinID", fillinServices.getChangeFillinID (fillin.getNameMember(), fillin.getWeek(),fillin.getMonAmFunction(), fillin.getMonAmTask(), fillin.getMonAmLocation(), fillin.getMonAmAbsent(), fillin.getMonPmFunction(), fillin.getMonPmTask(), fillin.getMonPmLocation(), fillin.getMonPmAbsent(), fillin.getTueAmFunction(), fillin.getTueAmTask(), fillin.getTueAmLocation(), fillin.getTueAmAbsent(), fillin.getTuePmFunction(), fillin.getTuePmTask(), fillin.getTuePmLocation(), fillin.getTuePmAbsent(), fillin.getWedAmFunction(), fillin.getWedAmTask(), fillin.getWedAmLocation(), fillin.getWedAmAbsent(), fillin.getWedPmFunction(), fillin.getWedPmTask(), fillin.getWedPmLocation(), fillin.getWedPmAbsent(), fillin.getThuAmFunction(), fillin.getThuAmTask(), fillin.getThuAmLocation(), fillin.getThuAmAbsent(), fillin.getThuPmFunction(), fillin.getThuPmTask(), fillin.getThuPmLocation(), fillin.getThuPmAbsent(), fillin.getFriAmFunction(), fillin.getFriAmTask(), fillin.getFriAmLocation(), fillin.getFriAmAbsent(), fillin.getFriPmFunction(), fillin.getFriPmTask(), fillin.getFriPmLocation(), fillin.getFriPmAbsent()));
         return "changeotherIdVCM";
     }

@@ -356,4 +356,8 @@ public class FillinServices4 {
     public List<Fillin>  getTableFillinLCMAbsentFriPm(String week)throws SQLException {
         return fillin4DAO. getTableFillinLCMAbsentFriPm(week);
     }
+
+    public List<Fillin>  getTableFillinLCMAbsent(String week)throws SQLException {
+        return fillin4DAO. getTableFillinLCMAbsent(week);
+    }
 }

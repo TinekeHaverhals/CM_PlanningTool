@@ -1,5 +1,6 @@
 package CM.Data;
 
+import CM.Model.Fillin;
 import CM.Model.StaffMember;
 import CM.Model.Task;
 import org.springframework.stereotype.Repository;
@@ -19,7 +20,6 @@ public class StaffMemberDAO {
         Connection connection = ConnectionFactory.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM StaffMembers Where EmployeeId=?;");
         statement.setString(1, employeeId);
-
         ResultSet rs = statement.executeQuery();
         StaffMember staffMember= null;
 
@@ -196,4 +196,6 @@ public class StaffMemberDAO {
         }
         return staffMembers;
     }
+
+
 }

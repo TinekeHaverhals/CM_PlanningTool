@@ -4,6 +4,7 @@ import CM.Model.Fillin;
 import CM.Model.StaffMember;
 import org.springframework.stereotype.Repository;
 
+import javax.validation.constraints.Null;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import java.util.List;
  */
 @Repository
 public class Fillin4DAO {
+
 
     public List<Fillin> getTableFillinLCMMonAmTel(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
@@ -40,6 +42,7 @@ public class Fillin4DAO {
                 fillins.add(fillin);
             }
         }
+
         return fillins;
     }
 
@@ -2008,6 +2011,45 @@ public class Fillin4DAO {
         }
         return fillins;
     }
+
+    public List<Fillin> getTableFillinLCMAbsent(String week) throws SQLException {
+        Connection connection = ConnectionFactory.getConnection();
+        PreparedStatement statement = connection.prepareStatement("SELECT CONCAT (StaffMembers.AbbreviationName,'   ', MonAmAbsent) AS MonAmAbsent,   CONCAT (StaffMembers.AbbreviationName,'   ', MonPmAbsent) AS MonPmAbsent , \n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', TueAmAbsent) AS TueAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', TuePmAbsent) AS TuePmAbsent,\n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', WedAmAbsent) AS WedAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', WedPmAbsent) AS WedPmAbsent,\n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', ThuAmAbsent) AS ThuAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', ThuPmAbsent) AS ThuPmAbsent ,\n" +
+                "CONCAT (StaffMembers.AbbreviationName,'   ', FriAmAbsent) AS FriAmAbsent, CONCAT (StaffMembers.AbbreviationName,'   ', FriPmAbsent) AS FriPmAbsent\n" +
+                "FROM Fillin \n" +
+                "INNER JOIN  StaffMembers ON Fillin.IdStaffMember=StaffMembers.Id  \n" +
+                "WHERE Week = ? AND Fillin.Department = 'LCM' AND\n" +
+                "(Fillin.MonAmAbsent = 'Absent' OR Fillin.MonPmAbsent = 'Absent' OR Fillin.TueAmAbsent = 'Absent' OR Fillin.TuePmAbsent = 'Absent'\n" +
+                "OR Fillin.WedAmAbsent = 'Absent' OR Fillin.WedPmAbsent = 'Absent' OR Fillin.ThuAmAbsent = 'Absent' OR Fillin.ThuPmAbsent = 'Absent' \n" +
+                "OR Fillin.FriAmAbsent = 'Absent' OR Fillin.FriPmAbsent = 'Absent' )\n");
+        statement.setString(1, week);
+        ResultSet rs = statement.executeQuery();
+        List<Fillin> fillins = new ArrayList<>();
+        Fillin fillin = null;
+        StaffMember staffMember = null;
+        if (rs != null) {
+            while (rs.next()) {
+                fillin = new Fillin();
+                staffMember = new StaffMember();
+                fillin.setMonAmAbsent(rs.getString("MonAmAbsent"));
+                fillin.setMonPmAbsent(rs.getString("MonPmAbsent"));
+                fillin.setTueAmAbsent(rs.getString("TueAmAbsent"));
+                fillin.setTuePmAbsent(rs.getString("TuePmAbsent"));
+                fillin.setWedAmAbsent(rs.getString("WedAmAbsent"));
+                fillin.setWedPmAbsent(rs.getString("WedPmAbsent"));
+                fillin.setThuAmAbsent(rs.getString("ThuAmAbsent"));
+                fillin.setThuPmAbsent(rs.getString("ThuAmAbsent"));
+                fillin.setFriAmAbsent(rs.getString("FriAmAbsent"));
+                fillin.setFriPmAbsent(rs.getString("FriAmAbsent"));
+                fillins.add(fillin);
+            }
+        }
+        return fillins;
+    }
+
 
     public List<Fillin> getTableFillinLCMAbsentMonAm(String week) throws SQLException {
         Connection connection = ConnectionFactory.getConnection();
