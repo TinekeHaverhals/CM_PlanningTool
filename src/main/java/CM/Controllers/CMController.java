@@ -1030,6 +1030,7 @@ public class CMController {
         model.addAttribute("tableFillinVCMTaskThuPm", fillinServices2.getTableFillinVCMTaskThuPm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskFriAm", fillinServices2.getTableFillinVCMTaskFriAm(fillin.getWeek()));
         model.addAttribute("tableFillinVCMTaskFriPm", fillinServices2.getTableFillinVCMTaskFriPm(fillin.getWeek()));
+        model.addAttribute("tableFillinVCMAbsent", fillinServices2.getTableFillinVCMAbsent(fillin.getWeek()));
         model.addAttribute("staffMembers", staffMemberServices.getAllStaffMember());
         return "VCMKopie";
     }

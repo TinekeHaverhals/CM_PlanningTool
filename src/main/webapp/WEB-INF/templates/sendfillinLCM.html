@@ -89,20 +89,20 @@
 
     <label for="monAmFunction" >Choose a function :</label>
     <select name="monAmFunction" id="monAmFunction" >
-        <option value="<null>"  >Choose a function</option>
+        <option value=""  >Choose a function</option>
         <option th:each="function: ${functionLCMsMonAm}">[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
 
     <label for="monAmTask" >Choose a task :</label>
     <select name="monAmTask" id="monAmTask" >
-        <option  value="<null>"  >Choose a task</option>
+        <option   value=""   >Choose a task</option>
         <option th:each="task: ${tasks}" >[[${task.taskName}]]</option>
     </select>
 
     <label for="monAmLocation">Choose a location :</label>
     <select name="monAmLocation" id="monAmLocation">
-        <option  value="<null>"  >Choose a Location</option>
+        <option   value=""   >Choose a Location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -110,18 +110,18 @@
     <input TYPE="checkbox" NAME="monPmAbsent" VALUE="Absent">absent
     <label for="monPmFunction" >Choose a function :</label>
     <select name="monPmFunction" id="monPmFunction" >
-        <option>Choose a function</option>
+        <option  value="" >Choose a function</option>
         <option th:each="function: ${functionLCMsMonPm}">[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="monPmTask" >Choose a task :</label>
     <select name="monPmTask" id="monPmTask" >
-        <option >Choose a task</option>
+        <option  value="" >Choose a task</option>
         <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
     </select>
     <label for="monPmLocation">Choose a location :</label>
     <select name="monPmLocation" id="monPmLocation">
-        <option  >Choose a location</option>
+        <option   value="" >Choose a location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -130,18 +130,18 @@
     <input TYPE="checkbox" NAME="tueAmAbsent" VALUE="Absent">absent
     <label for="tueAmFunction" >Choose a function :</label>
     <select name="tueAmFunction" id="tueAmFunction" >
-        <option >Choose a function</option>
+        <option  value=""  >Choose a function</option>
         <option th:each="function: ${functionLCMsTueAm}" >[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="tueAmTask" >Choose a task :</label>
     <select name="tueAmTask" id="tueAmTask" >
-        <option  >Choose a task</option>
+        <option  value=""  >Choose a task</option>
         <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
     </select>
     <label for="tueAmLocation">Choose a location :</label>
     <select name="tueAmLocation" id="tueAmLocation">
-        <option  >Choose a location</option>
+        <option  value=""  >Choose a location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -149,13 +149,13 @@
     <input TYPE="checkbox" NAME="tuePmAbsent" VALUE="Absent">absent
     <label for="tuePmFunction" >Choose a function :</label>
     <select name="tuePmFunction" id="tuePmFunction" >
-        <option  >Choose a function</option>
+        <option  value=""  >Choose a function</option>
         <option th:each="function: ${functionLCMsTuePm}" >[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="tuePmTask" >Choose a task :</label>
     <select name="tuePmTask" id="tuePmTask" >
-        <option  >Choose a task</option>
+        <option  value=""  >Choose a task</option>
         <option th:each="task: ${tasks}" >[[${task.taskName}]]</option>
     </select>
     <label for="tuePmLocation">Choose a location :</label>
@@ -169,18 +169,18 @@
     <input TYPE="checkbox" NAME="wedAmAbsent" VALUE="Absent">absent
     <label for="wedAmFunction" >Choose a function :</label>
     <select name="wedAmFunction" id="wedAmFunction" >
-        <option >Choose a function</option>
+        <option  value=""  >Choose a function</option>
         <option th:each="function:${functionLCMsWedAm}" >[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="wedAmTask" >Choose a task :</label>
     <select name="wedAmTask" id="wedAmTask" >
-        <option >Choose a task</option>
+        <option value=""  >Choose a task</option>
         <option th:each="task: ${tasks}" >[[${task.taskName}]]</option>
     </select>
     <label for="wedAmLocation">Choose a location :</label>
     <select name="wedAmLocation" id="wedAmLocation">
-        <option >Choose a location</option>
+        <option  value="" >Choose a location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -188,18 +188,18 @@
     <input TYPE="checkbox" NAME="wedPmAbsent" VALUE="Absent">absent
     <label for="wedPmFunction" >Choose a function :</label>
     <select name="wedPmFunction" id="wedPmFunction" >
-        <option>Choose a function</option>
+        <option  value="" >Choose a function</option>
         <option th:each="function: ${functionLCMsWedPm}">[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="wedPmTask" >Choose a task :</label>
     <select name="wedPmTask" id="wedPmTask" >
-        <option>Choose a task</option>
+        <option  value="" >Choose a task</option>
         <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
     </select>
     <label for="wedPmLocation">Choose a location :</label>
     <select name="wedPmLocation" id="wedPmLocation">
-        <option>Choose a location</option>
+        <option  value="" >Choose a location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -208,18 +208,18 @@
     <input TYPE="checkbox" NAME="thuAmAbsent" VALUE="Absent">absent
     <label for="thuAmFunction" >Choose a function :</label>
     <select name="thuAmFunction" id="thuAmFunction" >
-        <option>Choose a function</option>
+        <option  value="" >Choose a function</option>
         <option th:each="function: ${functionLCMsThuAm}">[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="thuAmTask" >Choose a task :</label>
     <select name="thuAmTask" id="thuAmTask" >
-        <option>Choose a task</option>
+        <option  value="" >Choose a task</option>
         <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
     </select>
     <label for="thuAmLocation">Choose a location :</label>
     <select name="thuAmLocation" id="thuAmLocation">
-        <option>Choose a Location</option>
+        <option  value="" >Choose a Location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -227,18 +227,18 @@
     <input TYPE="checkbox" NAME="thuPmAbsent" VALUE="Absent">absent
     <label for="thuPmFunction" >Choose a function :</label>
     <select name="thuPmFunction" id="thuPmFunction" >
-        <option>Choose a function</option>
+        <option  value="" >Choose a function</option>
         <option th:each="function: ${functionLCMsThuPm}">[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="thuPmTask" >Choose a task :</label>
     <select name="thuPmTask" id="thuPmTask" >
-        <option>Choose a task</option>
+        <option  value="" >Choose a task</option>
         <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
     </select>
     <label for="thuPmLocation">Choose a location :</label>
     <select name="thuPmLocation" id="thuPmLocation">
-        <option>Choose a location</option>
+        <option  value="" >Choose a location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -247,18 +247,18 @@
     <input TYPE="checkbox" NAME="friAmAbsent" VALUE="Absent">absent
     <label for="friAmFunction" >Choose a function :</label>
     <select name="friAmFunction" id="friAmFunction" >
-        <option>Choose a function</option>
+        <option  value="" >Choose a function</option>
         <option th:each="function: ${functionLCMsFriAm}">[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="friAmTask" >Choose a task :</label>
     <select name="friAmTask" id="friAmTask" >
-        <option>Choose a task</option>
+        <option  value="" >Choose a task</option>
         <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
     </select>
     <label for="friAmLocation">Choose a location :</label>
     <select name="friAmLocation" id="friAmLocation">
-        <option>Choose a location</option>
+        <option  value="" >   Choose a location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>
@@ -266,18 +266,18 @@
     <input TYPE="checkbox" NAME="friPmAbsent" VALUE="Absent">absent
     <label for="friPmFunction" >Choose a function :</label>
     <select name="friPmFunction" id="friPmFunction" >
-        <option>Choose a function</option>
+        <option value="" >Choose a function</option>
         <option th:each="function: ${functionLCMsFriPm}">[[${function.namefunction}]]</option>
         <option value="Tasks" >Tasks</option>
     </select>
     <label for="friPmTask" >Choose a task :</label>
     <select name="friPmTask" id="friPmTask" >
-        <option>Choose a task</option>
+        <option value="" >Choose a task</option>
         <option th:each="task: ${tasks}">[[${task.taskName}]]</option>
     </select>
     <label for="friPmLocation">Choose a location :</label>
     <select name="friPmLocation" id="friPmLocation">
-        <option>Choose a location</option>
+        <option  value="" >Choose a location</option>
         <option th:each="location: ${locations}" >[[${location.locationName}]]</option>
     </select>
     <br>

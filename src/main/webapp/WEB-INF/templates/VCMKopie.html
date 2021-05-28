@@ -458,18 +458,18 @@
     <tr>
         <th colspan="23" class="schema">Absent</th>
     </tr>
-    <tr>
+    <tr td:each="fillin: ${tableFillinVCMAbsent}" >
         <th colspan="3"></th>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentMonAm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentMonPm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentTueAm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentTuePm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentWedAm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentWedPm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentThuAm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentThuPm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentFriAm}" >[[${fillin.abbreviationName}]]</td>
-        <td colspan="2" td:each="fillin: ${tableFillinVCMAbsentFriPm}">[[${fillin.abbreviationName}]]</td>
+        <td colspan="2"  >[[${fillin.MonAmAbsent}]]</td>
+        <td colspan="2"  >[[${fillin.MonPmAbsent}]]</td>
+        <td colspan="2"  >[[${fillin.TueAmAbsent}]]</td>
+        <td colspan="2"  >[[${fillin.TuePmAbsent}]]</td>
+        <td colspan="2"  >[[${fillin.WedAmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.WedPmAbsent}]]</td>
+        <td colspan="2"  >[[${fillin.ThuAmAbsent}]]</td>
+        <td colspan="2"  >[[${fillin.ThuPmAbsent}]]</td>
+        <td colspan="2"  >[[${fillin.FriAmAbsent}]]</td>
+        <td colspan="2" >[[${fillin.FriPmAbsent}]]</td>
     </tr>
 </table>
 </body>
